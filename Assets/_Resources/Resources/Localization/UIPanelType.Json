@@ -1,0 +1,30 @@
+[
+  {
+    "PanelType": 0,
+    "path": "Prefabs/UI/ItemPanel"
+  },
+  {
+    "PanelType": 1,
+    "path": "Prefabs/UI/WeaponPanel"
+  },
+  {
+    "PanelType": 2,
+    "path": "Prefabs/UI/RolePanel"
+  },
+  {
+    "PanelType": 3,
+    "path": "Prefabs/UI/NormalMenuPanel"
+  },
+  {
+    "PanelType": 4,
+    "path": "Prefabs/UI/OptionPanel"
+  },
+  {
+    "PanelType": 5,
+    "path": "Prefabs/UI/MainMenuPanel"
+  },
+  {
+    "PanelType": 6,
+    "path": "Prefabs/UI/MiniMapPanel"
+  }
+]

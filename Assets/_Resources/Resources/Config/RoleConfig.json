@@ -1,0 +1,40 @@
+[
+  {
+    "Hp": 100,
+    "Mp": 100,
+    "MaxHp": 100,
+    "MaxMp": 100,
+    "Atk": 1,
+    "Def": 0,
+    "MoveSpeed": 1,
+    "AtkSpeed": 2,
+    "HpRecoveryRate": 0,
+    "MpRecoveryRate": 4,
+    "Weapon": null,
+    "ItemID": null,
+    "IsWeaponForbidden": false,
+    "IsItemForbidden": false,
+    "AnimationId": 0,
+    "RoleDir": 0,
+    "ID": 0
+  },
+  {
+    "Hp": 100,
+    "Mp": 100,
+    "MaxHp": 100,
+    "MaxMp": 100,
+    "Atk": 1,
+    "Def": 0,
+    "MoveSpeed": 1,
+    "AtkSpeed": 2,
+    "HpRecoveryRate": 0,
+    "MpRecoveryRate": 4,
+    "Weapon": null,
+    "ItemID": null,
+    "IsWeaponForbidden": false,
+    "IsItemForbidden": false,
+    "AnimationId": 0,
+    "RoleDir": 0,
+    "ID": 1
+  }
+]

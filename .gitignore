@@ -1,0 +1,10 @@
+﻿################################################################################
+# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
+################################################################################
+
+/Temp/UnityLockfile
+/Temp
+Library/metadata/00/00b2eb35e8ce945939c6d18826e53e22.info
+Library/metadata/00/00a21dd275d09124eb344d570534dbfb
+Library/metadata/03/031c0f9e17bb8634c9d7ff48f5b51477.info
+*.info

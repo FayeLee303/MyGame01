@@ -1,0 +1,22 @@
+[
+  {
+    "Id": 1,
+    "Name": "苹果",
+    "Type": 0,
+    "Description": "回复5点hp",
+    "MaxLimit": 5,
+    "BuyPrice": 3,
+    "SellPrice": 1, 
+    "SpritePath": "Textures/Objs/Item/apple" 
+  },
+  {
+    "Id": 2,
+    "Name": "火腿",
+    "Type": 0,
+    "Description": "回复10点hp",
+    "MaxLimit": 5,
+    "BuyPrice": 3,
+    "SellPrice": 1,
+    "SpritePath": "Textures/Objs/Item/meat"
+  }
+]

@@ -1,0 +1,41 @@
+[
+  {
+    "Id": 1,
+    "Name": "生锈的斧头",
+    "Type": 1,
+    "Description": "一把生锈的斧头",
+    "Atk": 2,
+    "AtkRadius": 5,
+    "AtkSpeed": 3,
+    "Skill": null,
+    "BuyPrice": 5,
+    "SellPrice": 1,
+    "SpritePath": "Textures/Objs/Weapon/axe"
+  },
+  {
+    "Id": 2,
+    "Name": "普通的剑",
+    "Type": 0,
+    "Description": "普通的剑也能做不普通的事",
+    "Atk": 5,
+    "AtkRadius": 5,
+    "AtkSpeed": 5,
+    "Skill": null,
+    "BuyPrice": 8,
+    "SellPrice": 2,
+    "SpritePath": "Textures/Objs/Weapon/sword"
+  },
+  {
+    "Id": 3,
+    "Name": "一根法杖",
+    "Type": 0,
+    "Description": "一根枯藤做的法杖",
+    "Atk": 5,
+    "AtkRadius": 10,
+    "AtkSpeed": 3,
+    "Skill": null,
+    "BuyPrice": 8,
+    "SellPrice": 2,
+    "SpritePath": "Textures/Objs/Weapon/wand"
+  }
+]
