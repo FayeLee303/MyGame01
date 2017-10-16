@@ -55,7 +55,7 @@ public class MainMenuPanel : BasePanel, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
 
-        if (InventoryManager.Instance.IsPicked == true)
+        if (InventoryManager.Instance.IsPickedItem == true)
         {
             if (Input.GetKey(KeyCode.LeftControl)) //按下Ctrl一次丢一个
             {
@@ -65,6 +65,10 @@ public class MainMenuPanel : BasePanel, IPointerDownHandler
             {
                 InventoryManager.Instance.DripItem(InventoryManager.Instance.PickedItem.Amount, playerTransform.position);
             }
+        }
+        else if (InventoryManager.Instance.IsPickedWeapon == true)
+        {
+            InventoryManager.Instance.DripWeapon( playerTransform.position);
         }
         else
         {

@@ -201,6 +201,7 @@
     <Compile Include="Assets\Demo\Scripts\Obj\LookAtCamera.cs" />
     <Compile Include="Assets\Demo\Scripts\Obj\MonsterBornPoint.cs" />
     <Compile Include="Assets\Demo\Scripts\Obj\MonsterObj.cs" />
+    <Compile Include="Assets\Demo\Scripts\Obj\WeaponObj3D.cs" />
     <Compile Include="Assets\Demo2\Test\DBTest\CameraCtrl.cs" />
     <Compile Include="Assets\Demo2\Test\DBTest\DragonBonesTest.cs" />
     <Compile Include="Assets\Demo2\Test\DBTest\MoveTest.cs" />

@@ -151,7 +151,7 @@ public class Inventory : MonoBehaviour {
     }
 
     //找一个空的武器格子
-    private WeaponSlot FindEmptyWeaponSlot()
+    public WeaponSlot FindEmptyWeaponSlot()
     {
         foreach (WeaponSlot weaponSlot in weaponSlotList)
         {
@@ -164,7 +164,7 @@ public class Inventory : MonoBehaviour {
     }
 
     //看当前是否已经装备了相同类型的武器子
-    private bool FindSameTypeSlot(WeaponModel weapon)
+    public bool FindSameTypeSlot(WeaponModel weapon)
     {
         foreach (WeaponSlot weaponSlot in weaponSlotList)
         {

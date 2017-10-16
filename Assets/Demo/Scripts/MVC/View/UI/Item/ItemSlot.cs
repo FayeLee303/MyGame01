@@ -88,7 +88,7 @@ public class ItemSlot : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler,I
         if (transform.childCount > 0) //格子里有东西
         {
             ItemObj currentItem = transform.Find("ItemObjUI(Clone)").GetComponent<ItemObj>();//当前格子里的东西
-            if (InventoryManager.Instance.IsPicked == false) //当前没有选中任何物品，鼠标上没有物品
+            if (InventoryManager.Instance.IsPickedItem == false) //当前没有选中任何物品，鼠标上没有物品
             {
                 if (Input.GetKey(KeyCode.LeftControl))
                 {
@@ -156,7 +156,7 @@ public class ItemSlot : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler,I
         }
         else//是个空格
         {
-            if (InventoryManager.Instance.IsPicked == true)
+            if (InventoryManager.Instance.IsPickedItem == true)
             {
                 if (Input.GetKey(KeyCode.LeftControl))//按下crtl一次只放下一个
                 {

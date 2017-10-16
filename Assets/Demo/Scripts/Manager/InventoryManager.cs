@@ -32,7 +32,8 @@ public class InventoryManager  {
     public void Init()
     {
         toolTip = GameObject.Find("ToolTip").GetComponent<ToolTip>();
-        pickedItem = GameObject.Find("PickedObj").GetComponent<ItemObj>();
+        pickedItem = GameObject.Find("PickedItem").GetComponent<ItemObj>();
+        pickedWeapon = GameObject.Find("PickedWeapon").GetComponent<WeaponObj>();
         infoBox = GameObject.Find("InfoBox").GetComponent<InfoBox>();
         instantiateObj = GameObject.Find("ItemAndWeapon").GetComponent<ItemAndWeapon>();
     }
@@ -160,11 +161,11 @@ public class InventoryManager  {
 
 #region PickedItem相关
     private ItemObj pickedItem;//鼠标选中的物体
-    private bool isPicked = false; //标志是否选中
+    private bool isPickedItem = false; //标志是否选中
 
-    public bool IsPicked
+    public bool IsPickedItem //是否拿着物品
     {
-        get { return isPicked; }
+        get { return isPickedItem; }
     }
 
     public ItemObj PickedItem
@@ -177,7 +178,7 @@ public class InventoryManager  {
     public void PickUpItem(ItemModel item,int amount)
     {
         PickedItem.SetItem(item,amount);
-        isPicked = true;
+        isPickedItem = true;
         this.toolTip.HideToolTip(); //隐藏信息面板
         PickedItem.Show();
        
@@ -189,7 +190,7 @@ public class InventoryManager  {
         PickedItem.ReduceAmount(amount);
         if (pickedItem.Amount == 0)//全都放下了
         {
-            isPicked = false;
+            isPickedItem = false;
             PickedItem.Hide();
         }
     }
@@ -200,7 +201,7 @@ public class InventoryManager  {
         PickedItem.ReduceAmount(amount);
         if (pickedItem.Amount == 0)//全都丢掉了
         {
-            isPicked = false;
+            isPickedItem = false;
             PickedItem.Hide();
         }
         int dropRange = 10;//丢弃的范围
@@ -216,13 +217,58 @@ public class InventoryManager  {
 
     #endregion
 
+#region PickedWeapon相关
+    private WeaponObj pickedWeapon;//鼠标选中的物体
+    private bool isPickedWeapon = false; //标志是否选中
+
+    public bool IsPickedWeapon //是否拿着
+    {
+        get { return isPickedWeapon; }
+    }
+
+    public WeaponObj PickedWeapon
+    {
+        get { return pickedWeapon; }
+        set { pickedWeapon = value; }
+    }
+
+    //拿起武器槽中指定数量的物品
+    public void PickUpWeapon(WeaponModel weapon)
+    {
+        pickedWeapon.SetWeapon(weapon);
+        isPickedWeapon = true;
+        this.toolTip.HideToolTip(); //隐藏信息面板
+        pickedWeapon.Show();
+
+    }
+
+    //当前鼠标上的的武器放在格子里
+    public void RemoveWeapon()
+    {
+        isPickedWeapon = false;
+        pickedWeapon.Hide();
+    }
+
+    //在人的脚边丢弃物品
+    public void DripWeapon(Vector3 dropPos)
+    {
+        isPickedWeapon = false;
+        pickedWeapon.Hide();
+        int dropRange = 10;//丢弃的范围
+        Vector3 pos = dropPos + new Vector3(Random.Range(1, dropRange), Random.Range(1, dropRange),
+                              Random.Range(1, dropRange));
+        InstantiateWeaponObj3D(PickedWeapon.Weapon.Id, pos); //实例化
+        ShowInfoBox("丢弃了" + PickedWeapon.Weapon.Name); //显示提示
+    }
+    #endregion
+
 #region ToolTip相关
     public ToolTip toolTip;
     public bool isToolTipShow = false;
 
     public void ShowToolTip(string content)
     {
-        if (this.isPicked) return;//如果当前鼠标上有选中的物品就不显示信息面板
+        if (this.isPickedItem) return;//如果当前鼠标上有选中的物品就不显示信息面板
         isToolTipShow = true;
         toolTip.ShowToolTip(content);
     }
@@ -261,6 +307,11 @@ public class InventoryManager  {
     public void InstantiateItemObj3D(int itemID, Vector3 pos)
     {
         instantiateObj.InstantiateItemObj3D(itemID,pos);
+    }
+
+    public void InstantiateWeaponObj3D(int weaponId, Vector3 pos)
+    {
+        instantiateObj.InstantiateWeapon3D(weaponId, pos);
     }
 
     #endregion

@@ -17,7 +17,8 @@ public class UILayerOrder : MonoBehaviour {
     private Transform optionPanel; //系统菜单2
     private Transform miniMapPanel; //小地图菜单
     private Transform toolTip; //提示页面
-    private Transform pickedItem; //捡起操作
+    private Transform pickedItem; //捡起物品
+    private Transform pickedWeapon;//捡起武器
     private Transform infoBox; //信息框
 
     void Start ()
@@ -25,11 +26,13 @@ public class UILayerOrder : MonoBehaviour {
         mainMenuPanel = GameObject.FindObjectOfType<MainMenuPanel>().transform;
         toolTip = InventoryManager.Instance.toolTip.transform;
         pickedItem = InventoryManager.Instance.PickedItem.transform;
+        pickedWeapon = InventoryManager.Instance.PickedWeapon.transform;
         infoBox = InventoryManager.Instance.infoBox.transform;
         //把主界面放在最下面，把tooltip和pickedItem放在主界面下面
         mainMenuPanel.SetAsFirstSibling();
         toolTip.SetParent(mainMenuPanel);
         pickedItem.SetParent(mainMenuPanel);
+        pickedWeapon.SetParent(mainMenuPanel);
         infoBox.SetParent(mainMenuPanel);
     }
 	

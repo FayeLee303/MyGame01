@@ -22,7 +22,7 @@ public class ItemObj3D : MonoBehaviour {
 
     public void Awake ()
     {
-        Invoke("DestorySelf", InventoryManager.Instance.instantiateObj.stayTime);//不拾取就自动消失
+        Invoke("DestorySelf", InventoryManager.Instance.instantiateObj.itemStayTime);//不拾取就自动消失
     }
 
     // Update is called once per frame

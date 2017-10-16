@@ -9,22 +9,21 @@ public class WeaponObj : MonoBehaviour {
     public int CoolingTime { get; set; }//冷却时间
 
     private Image weaponImage;
-    private Image coolingMaskImage;//冷却遮罩
-    private Text coolingTimeText;
+ //   private Image coolingMaskImage;//冷却遮罩
+ //   private Text coolingTimeText;
 
-    ////放在这里获得比在Start里好
-    //private Image WeaponImage
-    //{
-    //    get
-    //    {
-    //        if (weaponImage == null)
-    //        {
-    //            weaponImage = this.GetComponent<Image>();
-    //        }
-    //        return weaponImage;
-    //    }
-    //}
-
+    //放在这里获得比在Start里好
+    private Image WeaponImage
+    {
+        get
+        {
+            if (weaponImage == null)
+            {
+                weaponImage = this.GetComponent<Image>();
+            }
+            return weaponImage;
+        }
+    }
     //private Text CoolingTimeText
     //{
     //    get
@@ -36,7 +35,6 @@ public class WeaponObj : MonoBehaviour {
     //        return coolingTimeText;
     //    }
     //}
-
     //private Image CoolingMaskImage
     //{
     //    get
@@ -49,11 +47,37 @@ public class WeaponObj : MonoBehaviour {
     //    }
     //}
 
-    public void Awake()
+    private Canvas canvas;
+
+    private float targetScale = 1f;//原来比例
+    private Vector3 animationScale = new Vector3(1.4f, 1.4f, 1.4f);//动画放大比例
+    private float smoothing = 5;//动画速度
+
+    public void Start()
     {
-        weaponImage = this.GetComponent<Image>();
-        coolingTimeText = this.GetComponentInChildren<Text>();
-        coolingMaskImage = this.GetComponentInChildren<Image>();
+        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+    }
+
+    private void Update()
+    {
+        if (InventoryManager.Instance.IsPickedWeapon == true)
+        {
+            //捡起物品就让物品跟随鼠标
+            Vector2 position;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform,
+                Input.mousePosition, null, out position);//用out输出
+            InventoryManager.Instance.PickedWeapon.SetLocalPosition(position);
+        }
+        if (transform.localScale.x != targetScale)
+        {
+            //动画
+            float scale = Mathf.Lerp(transform.localScale.x, targetScale, smoothing * Time.deltaTime);
+            transform.localScale = new Vector3(scale, scale, scale);
+            if (Mathf.Abs(transform.localScale.x - targetScale) < 0.02f) //小于一定值就认为插值成功了，可以节约性能
+            {
+                transform.localScale = new Vector3(targetScale, targetScale, targetScale);
+            }
+        }
     }
 
     //设置武器
@@ -61,15 +85,15 @@ public class WeaponObj : MonoBehaviour {
     {
         this.Weapon = weapon;
         //Update UI
-        weaponImage.sprite = Resources.Load<Sprite>(Weapon.SpritePath);
-
+        WeaponImage.sprite = Resources.Load<Sprite>(Weapon.SpritePath);
+        transform.localScale = animationScale;
     }
 
     //设置冷却时间
     public void SetCoolingTime(int coolingTime)
     {
         this.CoolingTime = coolingTime;
-        coolingTimeText.text = coolingTime.ToString();
+        //CoolingTimeText.text = coolingTime.ToString();
         //重置
         //TODO
     }
@@ -77,4 +101,19 @@ public class WeaponObj : MonoBehaviour {
     //冷却时间计时器，冷却图片跟着动
     //TODO
 
+    //控制显示
+    public void Show()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public void Hide()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public void SetLocalPosition(Vector3 position)
+    {
+        transform.localPosition = position;
+    }
 }

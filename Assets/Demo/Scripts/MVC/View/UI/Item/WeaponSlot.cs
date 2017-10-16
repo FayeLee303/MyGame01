@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 /// <summary>
 /// 武器槽
 /// </summary>
-public class WeaponSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class WeaponSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,IPointerDownHandler
 {
 
     public GameObject weaponPrefab;
@@ -66,6 +66,32 @@ public class WeaponSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         if (transform.childCount > 0)
         {
             InventoryManager.Instance.HideToolTip();
+        }
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if (transform.childCount > 0) //格子里有东西
+        {
+            WeaponObj currentWeapon = transform.Find("WeaponObjUI(Clone)").GetComponent<WeaponObj>();//当前格子里的东西
+            if (InventoryManager.Instance.IsPickedWeapon == false) //当前没有选中任何物品，鼠标上没有物品
+            {
+                InventoryManager.Instance.PickUpWeapon(currentWeapon.Weapon); //捡起
+                Destroy(currentWeapon.gameObject); //如果全拿走了，就把格子里的东西销毁
+            }
+            else//当前已经选中物品，鼠标上有物品
+            {
+                return;
+            }
+        }
+        else //格子里没有东西
+        {
+            if (InventoryManager.Instance.IsPickedWeapon == true) //当前鼠标上有东西就放下
+            {
+                this.StoreWeapon(InventoryManager.Instance.PickedWeapon.Weapon);
+                InventoryManager.Instance.RemoveWeapon();
+            }
+            else { return; }//当前没有选中任何物品，鼠标上没有物品,点击空格没有反应
         }
     }
 }

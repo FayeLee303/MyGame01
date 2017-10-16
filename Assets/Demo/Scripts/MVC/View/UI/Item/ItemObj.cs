@@ -18,7 +18,7 @@ public class ItemObj : MonoBehaviour {
 
     public void Update()
     {
-        if (InventoryManager.Instance.IsPicked == true)
+        if (InventoryManager.Instance.IsPickedItem == true)
         {
             //捡起物品就让物品跟随鼠标
             Vector2 position;
@@ -36,7 +36,6 @@ public class ItemObj : MonoBehaviour {
                 transform.localScale = new Vector3(targetScale, targetScale, targetScale);
             }
         }
-        //Debug.Log("现在拿的是" + InventoryManager.Instance.PickedItem.Item.Name + "数量是" + InventoryManager.Instance.PickedItem.Amount);
     }
 
 #region UI Component
