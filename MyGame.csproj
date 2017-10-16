@@ -115,6 +115,9 @@
     <Reference Include="Sirenix.Utilities.Editor">
       <HintPath>Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="BehaviorDesignerRuntime">
+      <HintPath>Assets\Plugins\Behavior Designer\Runtime\BehaviorDesignerRuntime.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="MyGame.Plugins.csproj">
@@ -139,6 +142,13 @@
     <Compile Include="Assets\Demo\Scripts\MapGenerate\Square.cs" />
     <Compile Include="Assets\Demo\Scripts\MapGenerate\SquareGrid.cs" />
     <Compile Include="Assets\Demo\Scripts\MapGenerate\Triangle.cs" />
+    <Compile Include="Assets\Demo\Scripts\MonsterBornPoint\AnnulusArea.cs" />
+    <Compile Include="Assets\Demo\Scripts\MonsterBornPoint\AreaBase.cs" />
+    <Compile Include="Assets\Demo\Scripts\MonsterBornPoint\CubeArea.cs" />
+    <Compile Include="Assets\Demo\Scripts\MonsterBornPoint\Point.cs" />
+    <Compile Include="Assets\Demo\Scripts\MonsterBornPoint\Points.cs" />
+    <Compile Include="Assets\Demo\Scripts\MonsterBornPoint\RandomUtility.cs" />
+    <Compile Include="Assets\Demo\Scripts\MonsterBornPoint\SphereArea.cs" />
     <Compile Include="Assets\Demo\Scripts\MVC\Command\CamTurnCommand.cs" />
     <Compile Include="Assets\Demo\Scripts\MVC\Command\CommandEvent.cs" />
     <Compile Include="Assets\Demo\Scripts\MVC\Command\OperationCommand.cs" />
@@ -189,6 +199,8 @@
     <Compile Include="Assets\Demo\Scripts\Obj\ItemAndWeapon.cs" />
     <Compile Include="Assets\Demo\Scripts\Obj\ItemObj3D.cs" />
     <Compile Include="Assets\Demo\Scripts\Obj\LookAtCamera.cs" />
+    <Compile Include="Assets\Demo\Scripts\Obj\MonsterBornPoint.cs" />
+    <Compile Include="Assets\Demo\Scripts\Obj\MonsterObj.cs" />
     <Compile Include="Assets\Demo2\Test\DBTest\CameraCtrl.cs" />
     <Compile Include="Assets\Demo2\Test\DBTest\DragonBonesTest.cs" />
     <Compile Include="Assets\Demo2\Test\DBTest\MoveTest.cs" />
@@ -420,6 +432,7 @@
     <None Include="Assets\Demo\Scripts\Obj\FogOfWar.shader" />
     <None Include="Assets\Demo\Scripts\Obj\FogOfWarCast.shader" />
     <None Include="Assets\InControl\README\README.txt" />
+    <None Include="Assets\Plugins\Behavior Designer\Editor\GridShader.shader" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween.XML" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween43.xml" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween46.xml" />

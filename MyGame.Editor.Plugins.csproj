@@ -181,6 +181,12 @@
     <Reference Include="GeneratedOdinEditors">
       <HintPath>Assets\Plugins\Sirenix\Assemblies\Editor\GeneratedOdinEditors.dll</HintPath>
     </Reference>
+    <Reference Include="BehaviorDesignerEditor">
+      <HintPath>Assets\Plugins\Behavior Designer\Editor\BehaviorDesignerEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="BehaviorDesignerRuntime">
+      <HintPath>Assets\Plugins\Behavior Designer\Runtime\BehaviorDesignerRuntime.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="MyGame.csproj">
@@ -193,6 +199,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Plugins\Behavior Designer\Editor\BehaviorTreeInspector.cs" />
+    <Compile Include="Assets\Plugins\Behavior Designer\Editor\ExternalBehaviorTreeInspector.cs" />
+    <Compile Include="Assets\Plugins\Behavior Designer\Editor\Object Drawers\FloatSliderDrawer.cs" />
+    <Compile Include="Assets\Plugins\Behavior Designer\Editor\Object Drawers\IntSliderDrawer.cs" />
     <Compile Include="Assets\Plugins\Demigiant\DOTweenPro\Editor\DOTweenAnimationInspector.cs" />
     <Compile Include="Assets\Plugins\DragonBones\DragonBones\unity\Editor\AssetProcess.cs" />
     <Compile Include="Assets\Plugins\DragonBones\DragonBones\unity\Editor\DragonBonesIcons.cs" />
@@ -204,6 +214,7 @@
     <None Include="Assets\Demo\Scripts\Obj\FogOfWar.shader" />
     <None Include="Assets\Demo\Scripts\Obj\FogOfWarCast.shader" />
     <None Include="Assets\InControl\README\README.txt" />
+    <None Include="Assets\Plugins\Behavior Designer\Editor\GridShader.shader" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween.XML" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween43.xml" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween46.xml" />

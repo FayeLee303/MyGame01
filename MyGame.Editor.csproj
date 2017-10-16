@@ -181,6 +181,12 @@
     <Reference Include="GeneratedOdinEditors">
       <HintPath>Assets\Plugins\Sirenix\Assemblies\Editor\GeneratedOdinEditors.dll</HintPath>
     </Reference>
+    <Reference Include="BehaviorDesignerEditor">
+      <HintPath>Assets\Plugins\Behavior Designer\Editor\BehaviorDesignerEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="BehaviorDesignerRuntime">
+      <HintPath>Assets\Plugins\Behavior Designer\Runtime\BehaviorDesignerRuntime.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="MyGame.csproj">
@@ -216,6 +222,7 @@
     <None Include="Assets\Demo\Scripts\Obj\FogOfWar.shader" />
     <None Include="Assets\Demo\Scripts\Obj\FogOfWarCast.shader" />
     <None Include="Assets\InControl\README\README.txt" />
+    <None Include="Assets\Plugins\Behavior Designer\Editor\GridShader.shader" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween.XML" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween43.xml" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween46.xml" />

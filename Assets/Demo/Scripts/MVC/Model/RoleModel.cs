@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class RoleModel {
 
+    public int ID { get; set; }//角色ID
+    public string Name { get; set; }//
     public int Hp { get; set; }//生命值
     public int Mp { get; set; }//法力值
     public int MaxHp { get; set; }//生命值上限
@@ -22,7 +24,7 @@ public class RoleModel {
     public bool IsItemForbidden { get; set; }//是否禁用道具
     public int AnimationId { get; set; }//角色动画编号
     public Direction RoleDir { get; set; }//角色方向
-    public int ID { get; set; }//角色ID
+    
 
     public enum Direction{
         None = 0,
