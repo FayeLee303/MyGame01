@@ -7,105 +7,58 @@ using UnityEngine.UI;
 
 public class PlayerView : FightingBaseView
 {
-    [Inject]
-    public MapModel map { get; set; }
-
-    private bool moving;
-
     //Gui组件
     private Image hpSlider;
     private Text hpText;
+    private Text hpMaxText;
+    private Image mpSlider;
+    private Text mpText;
+    private Text mpMaxText;
+    private Text Atk;
+    private Text Def;
+    private Text moveSpeed;
+    private Text money;
+    
 
     //重写父类里的Start函数，在这里初始化
     protected override void Start()
     {
-        if (hpSlider == null || hpText == null)
-        {
-            hpSlider = GameObject.Find("RoleHp").GetComponent<Image>();//初始化
-            hpText = GameObject.Find("HpText").GetComponent<Text>();
-            if (hpSlider == null || hpText == null)
-            {
-                Debug.Log("hpSlider或者hpText没找到");
-            }
-        }
+
+        hpSlider = GameObject.Find("RoleHp").GetComponent<Image>();
+        hpText = GameObject.Find("HpText").GetComponent<Text>();
+        hpMaxText = GameObject.Find("maxHp").GetComponent<Text>();
+
+        mpSlider = GameObject.Find("RoleMp").GetComponent<Image>();
+        mpText = GameObject.Find("MpText").GetComponent<Text>();
+        mpMaxText = GameObject.Find("maxMp").GetComponent<Text>();
+
+        Atk = GameObject.Find("AtkNum").GetComponent<Text>();
+        Def = GameObject.Find("DefNum").GetComponent<Text>();
+        moveSpeed = GameObject.Find("MoveSpeedNum").GetComponent<Text>();
+        money = GameObject.Find("MoneyNum").GetComponent<Text>();
         base.Start();
     }
 
     public void Update()
     {
         GameUpdate();
-        //Debug.Log(DataBaseManager.Instance.FindRole(0).Atk);
     }
 
     public override void GameUpdate()
     {
-        Move();
         //更新UI
-        hpSlider.fillAmount = DataBaseManager.Instance.FindRole(0).Hp / DataBaseManager.Instance.FindRole(0).MaxHp;
+        hpSlider.fillAmount = (float)DataBaseManager.Instance.FindRole(0).Hp / (float)DataBaseManager.Instance.FindRole(0).MaxHp;
         hpText.text = DataBaseManager.Instance.FindRole(0).Hp.ToString();
-        //Debug.Log(hpSlider.fillAmount);
-        //Debug.Log(DataBaseManager.Instance.FindRole(0).Hp);
-        //Debug.Log(DataBaseManager.Instance.FindRole(0).MaxHp);
-    }
+        hpMaxText.text = DataBaseManager.Instance.FindRole(0).MaxHp.ToString();
 
+        mpSlider.fillAmount = (float)DataBaseManager.Instance.FindRole(0).Mp / (float)DataBaseManager.Instance.FindRole(0).MaxMp;
+        mpText.text = DataBaseManager.Instance.FindRole(0).Mp.ToString();
+        mpMaxText.text = DataBaseManager.Instance.FindRole(0).MaxMp.ToString();
 
-    public void MoveToDirection(IEvent e)
-    {
-        var cd = e as CustomOperationEventData;
-        moving = cd.ismoving;
-    }
-    
-    //真正的移动代码
-    public void Move()
-    {
-        //在这里更新速度
-        if (moving)
-        {
-            float h = Input.GetAxis("Horizontal");
-            float v = Input.GetAxis("Vertical");
-
-            for (int i = 0; i < 4; i++)
-            {
-                if (map.MapDir[i] == "North")
-                {
-                    if (i == 0)
-                    {
-                        break;
-                    }
-                    if (i == 1)
-                    {
-                        float temp;
-                        temp = v;
-                        v = -h;
-                        h = temp;
-                        break;
-                    }
-                    if (i == 2)
-                    {
-                        h = -h;
-                        v = -v;
-                        break;
-                    }
-                    if (i == 3)
-                    {
-                        float temp;
-                        temp = h;
-                        h = -v;
-                        v = temp;
-                        break;
-                    }
-                }
-            }
-
-            GetComponent<CharacterController>().SimpleMove(new Vector3(h * 5, 0, v * 5));
-            //GetComponent<CharacterController>().SimpleMove(new Vector3(h * role.MoveSpeed, 0, v * role.MoveSpeed));
-
-        }
-        if (!moving)
-        {
-            GetComponent<CharacterController>().SimpleMove(new Vector3(0, 0, 0));
-        }
-
+        Atk.text = DataBaseManager.Instance.FindRole(0).Atk.ToString();
+        Def.text = DataBaseManager.Instance.FindRole(0).Def.ToString();
+        moveSpeed.text = DataBaseManager.Instance.FindRole(0).MoveSpeed.ToString();
+        money.text = DataBaseManager.Instance.FindRole(0).Money.ToString();
     }
 
     //攻击流程思路

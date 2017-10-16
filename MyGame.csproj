@@ -148,6 +148,7 @@
     <Compile Include="Assets\Demo\Scripts\MVC\Model\BuffModel.cs" />
     <Compile Include="Assets\Demo\Scripts\MVC\Model\CustomEventData\CustomEventData.cs" />
     <Compile Include="Assets\Demo\Scripts\MVC\Model\CustomEventData\CustomOperationEventData.cs" />
+    <Compile Include="Assets\Demo\Scripts\MVC\Model\EffectModel.cs" />
     <Compile Include="Assets\Demo\Scripts\MVC\Model\GameConfig.cs" />
     <Compile Include="Assets\Demo\Scripts\MVC\Model\ItemModel.cs" />
     <Compile Include="Assets\Demo\Scripts\MVC\Model\MapModel.cs" />
@@ -183,6 +184,7 @@
     <Compile Include="Assets\Demo\Scripts\MVC\View\UI\UILayerOrder.cs" />
     <Compile Include="Assets\Demo\Scripts\MVC\View\UI\WeaponPanel.cs" />
     <Compile Include="Assets\Demo\Scripts\MVC\View\ViewEvent.cs" />
+    <Compile Include="Assets\Demo\Scripts\Obj\EffectObj.cs" />
     <Compile Include="Assets\Demo\Scripts\Obj\FogOfWar3D.cs" />
     <Compile Include="Assets\Demo\Scripts\Obj\ItemAndWeapon.cs" />
     <Compile Include="Assets\Demo\Scripts\Obj\ItemObj3D.cs" />

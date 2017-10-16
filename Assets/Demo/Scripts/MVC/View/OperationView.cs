@@ -8,8 +8,17 @@ public class OperationView : FightingBaseView {
     [Inject]
     public MapModel map { get; set; }
 
+    private Transform playerTransform;
+
+    //获取横竖轴上的输入
+    float h ;
+    float v ;
+
     public void Update()
     {
+        playerTransform = GameObject.Find("Player").transform;
+        h = Input.GetAxis("Horizontal");//获取横竖轴上的输入
+        v = Input.GetAxis("Vertical");
         GameUpdate();
         UIPanelUpdate();
         Test();
@@ -28,7 +37,10 @@ public class OperationView : FightingBaseView {
             {
                 type = GameConfig.OperationEvent.MOVE,
                 ismoving = true,
-                OperationEventType = GameConfig.OperationEvent.MOVE
+                OperationEventType = GameConfig.OperationEvent.MOVE,
+                playerTransform = this.playerTransform,
+                input_H = h,
+                input_V = v
             };
             dispatcher.Dispatch(GameConfig.OperationEvent.MOVE, data);
         }
@@ -42,7 +54,10 @@ public class OperationView : FightingBaseView {
             {
                 type = GameConfig.OperationEvent.STOP,
                 ismoving = false,
-                OperationEventType = GameConfig.OperationEvent.STOP
+                OperationEventType = GameConfig.OperationEvent.STOP,
+                playerTransform = this.playerTransform,
+                input_H = 0,
+                input_V = 0
             };
             dispatcher.Dispatch(GameConfig.OperationEvent.STOP, data);
         }
@@ -52,7 +67,6 @@ public class OperationView : FightingBaseView {
             CustomOperationEventData data = new CustomOperationEventData
             {
                 type = GameConfig.OperationEvent.BEATTACKED,
-                ismoving = false,
                 OperationEventType = GameConfig.OperationEvent.BEATTACKED
             };
             dispatcher.Dispatch(GameConfig.OperationEvent.BEATTACKED, data);
@@ -80,7 +94,59 @@ public class OperationView : FightingBaseView {
                 UIPanelManager.Instance.PushPanel(panelType); //推送到顶端
                 //Debug.Log("入栈");
             }
-        }      
+        }
+
+        //使用道具，
+        //还没有做道具的冷却时间
+        //TODO
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            if (ItemPanel.Instance.FindItemObjInSlot(0) == null) return;
+            CustomOperationEventData data = new CustomOperationEventData
+            {
+                type = GameConfig.OperationEvent.USEITEM,
+                OperationEventType = GameConfig.OperationEvent.USEITEM,
+                itemObj = ItemPanel.Instance.FindItemObjInSlot(0),//第一个格子里的物品
+                playerTransform = this.playerTransform
+            };
+            dispatcher.Dispatch(GameConfig.OperationEvent.USEITEM, data);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            if (ItemPanel.Instance.FindItemObjInSlot(1) == null) return;
+            CustomOperationEventData data = new CustomOperationEventData
+            {
+                type = GameConfig.OperationEvent.USEITEM,
+                OperationEventType = GameConfig.OperationEvent.USEITEM,
+                itemObj = ItemPanel.Instance.FindItemObjInSlot(1),//第二个格子里的物品
+                playerTransform = this.playerTransform
+            };
+            dispatcher.Dispatch(GameConfig.OperationEvent.USEITEM, data);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            if (ItemPanel.Instance.FindItemObjInSlot(2) == null) return;
+            CustomOperationEventData data = new CustomOperationEventData
+            {
+                type = GameConfig.OperationEvent.USEITEM,
+                OperationEventType = GameConfig.OperationEvent.USEITEM,
+                itemObj = ItemPanel.Instance.FindItemObjInSlot(2),//第三个格子里的物品
+                playerTransform = this.playerTransform
+            };
+            dispatcher.Dispatch(GameConfig.OperationEvent.USEITEM, data);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            if (ItemPanel.Instance.FindItemObjInSlot(3) == null) return;
+            CustomOperationEventData data = new CustomOperationEventData
+            {
+                type = GameConfig.OperationEvent.USEITEM,
+                OperationEventType = GameConfig.OperationEvent.USEITEM,
+                itemObj = ItemPanel.Instance.FindItemObjInSlot(3),//第四个格子里的物品
+                playerTransform = this.playerTransform
+            };
+            dispatcher.Dispatch(GameConfig.OperationEvent.USEITEM, data);
+        }
     }
 
     public void Test()

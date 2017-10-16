@@ -142,6 +142,24 @@
     <Reference Include="DOTweenProEditor">
       <HintPath>Assets\Plugins\Demigiant\DOTweenPro\Editor\DOTweenProEditor.dll</HintPath>
     </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>Assets\Plugins\LJR\Editor\dotnet2\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI">
+      <HintPath>Assets\Plugins\LJR\Editor\dotnet2\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML">
+      <HintPath>Assets\Plugins\LJR\Editor\dotnet2\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net">
+      <HintPath>Assets\Plugins\LJR\Editor\dotnet2\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats">
+      <HintPath>Assets\Plugins\LJR\Editor\dotnet2\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="LitJson">
+      <HintPath>Assets\Plugins\LJR\Plugins\LitJson.dll</HintPath>
+    </Reference>
     <Reference Include="Sirenix.OdinInspector.Attributes">
       <HintPath>Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
     </Reference>
@@ -162,24 +180,6 @@
     </Reference>
     <Reference Include="GeneratedOdinEditors">
       <HintPath>Assets\Plugins\Sirenix\Assemblies\Editor\GeneratedOdinEditors.dll</HintPath>
-    </Reference>
-    <Reference Include="NPOI.OpenXmlFormats">
-      <HintPath>Assets\Plugins\LJR\Editor\dotnet2\NPOI.OpenXmlFormats.dll</HintPath>
-    </Reference>
-    <Reference Include="NPOI">
-      <HintPath>Assets\Plugins\LJR\Editor\dotnet2\NPOI.dll</HintPath>
-    </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>Assets\Plugins\LJR\Editor\dotnet2\ICSharpCode.SharpZipLib.dll</HintPath>
-    </Reference>
-    <Reference Include="NPOI.OpenXml4Net">
-      <HintPath>Assets\Plugins\LJR\Editor\dotnet2\NPOI.OpenXml4Net.dll</HintPath>
-    </Reference>
-    <Reference Include="LitJson">
-      <HintPath>Assets\Plugins\LJR\Plugins\LitJson.dll</HintPath>
-    </Reference>
-    <Reference Include="NPOI.OOXML">
-      <HintPath>Assets\Plugins\LJR\Editor\dotnet2\NPOI.OOXML.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

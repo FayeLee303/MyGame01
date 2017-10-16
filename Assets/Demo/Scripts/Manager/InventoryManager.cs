@@ -26,6 +26,7 @@ public class InventoryManager  {
     {
         ParseItemJson();
         ParseWeaponJson();
+        ParseEffectJson();
     }
 
     public void Init()
@@ -111,6 +112,49 @@ public class InventoryManager  {
         }
 
         return null;
+    }
+    #endregion
+
+#region Effect相关
+    public List<EffectModel> effectList;
+    /// <summary>
+    /// 解析特效信息
+    /// </summary>
+    private void ParseEffectJson()
+    {
+        //文本在Unity里面是TextAsset类型
+        TextAsset effectJsonText = Resources.Load<TextAsset>("Localization/EffectJson");
+        if (effectJsonText != null)
+        {
+            string effectJsonString = effectJsonText.text;
+            effectList = JsonMapper.ToObject<List<EffectModel>>(effectJsonString);
+        }
+        else
+        {
+            Debug.Log("读取文件失败");
+        }
+    }
+
+    //根据id从列表里取
+    public EffectModel GetEffectById(int id)
+    {
+        foreach (EffectModel effect in effectList)
+        {
+            if (effect.Id == id)
+            {
+                return effect;
+            }
+        }
+
+        return null;
+    }
+
+    //实例化特效
+    public void InstantiateEffect(int effectId,Transform transform)
+    {
+        EffectModel effect = GetEffectById(effectId);
+        GameObject prefab = Resources.Load<GameObject>(effect.Path);//读取预制体
+        GameObject.Instantiate(prefab, transform.position, transform.rotation);//实例化特效        
     }
     #endregion
 

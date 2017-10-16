@@ -70,13 +70,7 @@ public class GameConfig  {
         ATTACK,
         BEATTACKED,
         PICK,
-        TURN_LEFT,
-        TURN_RIGHT,
-        CLICK_DOWN,
-        CLICK_UP,
-        KEY_DOWN,
-        KEY_UP
-
+        USEITEM
     }
 
 }

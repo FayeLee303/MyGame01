@@ -20,24 +20,16 @@ public class OperationMediator : FightingBaseMediator {
 
     protected override void UpdateListeners(bool enable)
     {
-        view.dispatcher.UpdateListener(enable, GameConfig.OperationEvent.CLICK_DOWN, OnOperation);
         view.dispatcher.UpdateListener(enable, GameConfig.OperationEvent.MOVE, Move);
         view.dispatcher.UpdateListener(enable, GameConfig.OperationEvent.STOP, Stop);
         view.dispatcher.UpdateListener(enable, GameConfig.OperationEvent.BEATTACKED, BeAttack);
+        view.dispatcher.UpdateListener(enable, GameConfig.OperationEvent.USEITEM, UseItem);
         base.UpdateListeners(enable);
     }
 
     protected override void InitData()
     {
         base.InitData();
-    }
-
-    private void OnOperation(IEvent e)
-    {
-        CustomEventData data = e as CustomEventData;
-        e.type = GameConfig.CoreEvent.USER_INPUT;
-        //派发用户输入事件
-        dispatcher.Dispatch(GameConfig.CoreEvent.USER_INPUT, data);
     }
 
     void Move(IEvent e)
@@ -59,5 +51,12 @@ public class OperationMediator : FightingBaseMediator {
         CustomEventData data = e as CustomEventData;
         e.type = GameConfig.CoreEvent.USER_INPUT;
         dispatcher.Dispatch(GameConfig.CoreEvent.USER_INPUT, data);       
+    }
+
+    void UseItem(IEvent e)
+    {
+        CustomEventData data = e as CustomEventData;
+        e.type = GameConfig.OperationEvent.USEITEM;
+        dispatcher.Dispatch(GameConfig.CoreEvent.USER_INPUT, data);
     }
 }

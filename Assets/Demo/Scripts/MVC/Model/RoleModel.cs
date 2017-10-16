@@ -13,6 +13,7 @@ public class RoleModel {
     public int Def { get; set; }//防御力
     public int MoveSpeed { get; set; }//移动速度
     public int AtkSpeed { get; set; }//攻击速度
+    public int Money { get; set; }//钱
     public int HpRecoveryRate { get; set; }//生命恢复速率
     public int MpRecoveryRate { get; set; }//法力恢复速率
     public List<WeaponModel> Weapon { get; set; } //武器

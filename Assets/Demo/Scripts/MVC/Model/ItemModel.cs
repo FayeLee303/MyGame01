@@ -13,6 +13,7 @@ public class ItemModel
     public int BuyPrice { get; set; }//买入价格
     public int SellPrice { get; set; }//卖出价格
     public string SpritePath { get; set; } //图片路径
+    public int EffectId { get; set; }//使用时会产生的特效
 
     public enum ItemType
     {

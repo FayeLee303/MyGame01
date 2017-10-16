@@ -39,7 +39,7 @@ public class ItemObj : MonoBehaviour {
         //Debug.Log("现在拿的是" + InventoryManager.Instance.PickedItem.Item.Name + "数量是" + InventoryManager.Instance.PickedItem.Amount);
     }
 
-    #region UI Component
+#region UI Component
     private Image itemImage;
     private Text amountText;
     private float targetScale = 1f;//原来比例
@@ -70,8 +70,9 @@ public class ItemObj : MonoBehaviour {
             return amountText;
         }
     }
-#endregion
+    #endregion
 
+#region 控制显示
     //自身发生变化
     public void SetItem(ItemModel item, int amount)
     {
@@ -145,6 +146,21 @@ public class ItemObj : MonoBehaviour {
     {
         transform.localPosition = position;
     }
+    #endregion
 
+#region 实际作用效果
+
+    public void EffectOnRole(ItemObj itemobj, RoleModel role,Transform transform)
+    {
+        InventoryManager.Instance.InstantiateEffect(itemobj.Item.EffectId, transform);//实例化
+        InventoryManager.Instance.ShowInfoBox("使用了1个" + itemobj.Item.Name);
+        //对人做加减
+        itemobj.ReduceAmount(1);     
+        if (itemobj.Amount <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+#endregion
 }
 
