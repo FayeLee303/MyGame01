@@ -30,7 +30,7 @@ public class InfoBox : MonoBehaviour {
 	    }
 	    if (InventoryManager.Instance.isInfoBoxShow)
 	    {
-	        InventoryManager.Instance.infoBox.SetLocalPosition(new Vector3(0, 0, 0));
+	        //InventoryManager.Instance.infoBox.SetLocalPosition(new Vector3(0, 50, 0));
 	    }
 	}
 

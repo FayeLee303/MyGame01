@@ -32,7 +32,7 @@ public class InventoryManager  {
     public void Init()
     {
         toolTip = GameObject.Find("ToolTip").GetComponent<ToolTip>();
-        pickedItem = GameObject.Find("PickedItem").GetComponent<ItemObj>();
+        pickedItem = GameObject.Find("PickedItem").GetComponent<PickedItemObjUI>();
         pickedWeapon = GameObject.Find("PickedWeapon").GetComponent<WeaponObj>();
         infoBox = GameObject.Find("InfoBox").GetComponent<InfoBox>();
         instantiateObj = GameObject.Find("ItemAndWeapon").GetComponent<ItemAndWeapon>();
@@ -160,7 +160,7 @@ public class InventoryManager  {
     #endregion
 
 #region PickedItem相关
-    private ItemObj pickedItem;//鼠标选中的物体
+    private PickedItemObjUI pickedItem;//鼠标选中的物体
     private bool isPickedItem = false; //标志是否选中
 
     public bool IsPickedItem //是否拿着物品
@@ -168,7 +168,7 @@ public class InventoryManager  {
         get { return isPickedItem; }
     }
 
-    public ItemObj PickedItem
+    public PickedItemObjUI PickedItem
     {
         get { return pickedItem; }
         set { pickedItem = value; }
@@ -258,6 +258,7 @@ public class InventoryManager  {
         Vector3 pos = dropPos + new Vector3(Random.Range(1, dropRange), Random.Range(1, dropRange),
                               Random.Range(1, dropRange));
         InstantiateWeaponObj3D(PickedWeapon.Weapon.Id, pos); //实例化
+        PickedWeapon.ResetOnRole(PickedWeapon.Weapon, DataBaseManager.Instance.FindRole(0));//丢弃时对人做减法
         ShowInfoBox("丢弃了" + PickedWeapon.Weapon.Name); //显示提示
     }
     #endregion

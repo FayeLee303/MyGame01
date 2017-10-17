@@ -102,50 +102,86 @@ public class OperationView : FightingBaseView {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             if (ItemPanel.Instance.FindItemObjInSlot(0) == null) return;
-            CustomOperationEventData data = new CustomOperationEventData
+            else if (ItemPanel.Instance.FindItemObjInSlot(0).cdTimer.IsTimeUp == false)
             {
-                type = GameConfig.OperationEvent.USEITEM,
-                OperationEventType = GameConfig.OperationEvent.USEITEM,
-                itemObj = ItemPanel.Instance.FindItemObjInSlot(0),//第一个格子里的物品
-                playerTransform = this.playerTransform
-            };
-            dispatcher.Dispatch(GameConfig.OperationEvent.USEITEM, data);
+                InventoryManager.Instance.ShowInfoBox("还没有准备好");
+                return;
+            }
+            else //格子里有物品并且物品没有在冷却时才发消息并且重设计时器
+            {
+                CustomOperationEventData data = new CustomOperationEventData
+                {
+                    type = GameConfig.OperationEvent.USEITEM,
+                    OperationEventType = GameConfig.OperationEvent.USEITEM,
+                    itemObj = ItemPanel.Instance.FindItemObjInSlot(0),//第一个格子里的物品
+                    playerTransform = this.playerTransform
+                };
+                dispatcher.Dispatch(GameConfig.OperationEvent.USEITEM, data);
+                ItemPanel.Instance.FindItemObjInSlot(0).cdTimer.Start(); //重设计时器
+            }
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             if (ItemPanel.Instance.FindItemObjInSlot(1) == null) return;
-            CustomOperationEventData data = new CustomOperationEventData
+            else if (ItemPanel.Instance.FindItemObjInSlot(1).cdTimer.IsTimeUp == false)
             {
-                type = GameConfig.OperationEvent.USEITEM,
-                OperationEventType = GameConfig.OperationEvent.USEITEM,
-                itemObj = ItemPanel.Instance.FindItemObjInSlot(1),//第二个格子里的物品
-                playerTransform = this.playerTransform
-            };
-            dispatcher.Dispatch(GameConfig.OperationEvent.USEITEM, data);
+                InventoryManager.Instance.ShowInfoBox("还没有准备好");
+                return;
+            }
+            else //格子里有物品并且物品没有在冷却时才发消息并且重设计时器
+            {
+                CustomOperationEventData data = new CustomOperationEventData
+                {
+                    type = GameConfig.OperationEvent.USEITEM,
+                    OperationEventType = GameConfig.OperationEvent.USEITEM,
+                    itemObj = ItemPanel.Instance.FindItemObjInSlot(1),//第二个格子里的物品
+                    playerTransform = this.playerTransform
+                };
+                dispatcher.Dispatch(GameConfig.OperationEvent.USEITEM, data);
+                ItemPanel.Instance.FindItemObjInSlot(1).cdTimer.Start(); //重设计时器
+            }
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             if (ItemPanel.Instance.FindItemObjInSlot(2) == null) return;
-            CustomOperationEventData data = new CustomOperationEventData
+            else if (ItemPanel.Instance.FindItemObjInSlot(2).cdTimer.IsTimeUp == false)
             {
-                type = GameConfig.OperationEvent.USEITEM,
-                OperationEventType = GameConfig.OperationEvent.USEITEM,
-                itemObj = ItemPanel.Instance.FindItemObjInSlot(2),//第三个格子里的物品
-                playerTransform = this.playerTransform
-            };
-            dispatcher.Dispatch(GameConfig.OperationEvent.USEITEM, data);
+                InventoryManager.Instance.ShowInfoBox("还没有准备好");
+                return;
+            }
+            else //格子里有物品并且物品没有在冷却时才发消息并且重设计时器
+            {
+                CustomOperationEventData data = new CustomOperationEventData
+                {
+                    type = GameConfig.OperationEvent.USEITEM,
+                    OperationEventType = GameConfig.OperationEvent.USEITEM,
+                    itemObj = ItemPanel.Instance.FindItemObjInSlot(2),//第三个格子里的物品
+                    playerTransform = this.playerTransform
+                };
+                dispatcher.Dispatch(GameConfig.OperationEvent.USEITEM, data);
+                ItemPanel.Instance.FindItemObjInSlot(2).cdTimer.Start(); //重设计时器
+            }
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             if (ItemPanel.Instance.FindItemObjInSlot(3) == null) return;
-            CustomOperationEventData data = new CustomOperationEventData
+            else if (ItemPanel.Instance.FindItemObjInSlot(3).cdTimer.IsTimeUp == false)
             {
-                type = GameConfig.OperationEvent.USEITEM,
-                OperationEventType = GameConfig.OperationEvent.USEITEM,
-                itemObj = ItemPanel.Instance.FindItemObjInSlot(3),//第四个格子里的物品
-                playerTransform = this.playerTransform
-            };
-            dispatcher.Dispatch(GameConfig.OperationEvent.USEITEM, data);
+                InventoryManager.Instance.ShowInfoBox("还没有准备好");
+                return;
+            }
+            else //格子里有物品并且物品没有在冷却时才发消息并且重设计时器
+            {
+                CustomOperationEventData data = new CustomOperationEventData
+                {
+                    type = GameConfig.OperationEvent.USEITEM,
+                    OperationEventType = GameConfig.OperationEvent.USEITEM,
+                    itemObj = ItemPanel.Instance.FindItemObjInSlot(3),//第四个格子里的物品
+                    playerTransform = this.playerTransform
+                };
+                dispatcher.Dispatch(GameConfig.OperationEvent.USEITEM, data);
+                ItemPanel.Instance.FindItemObjInSlot(3).cdTimer.Start(); //重设计时器
+            }
         }
     }
 
@@ -166,9 +202,16 @@ public class OperationView : FightingBaseView {
         //掉落物品
         if (Input.GetKeyDown(KeyCode.O))
         {
-            int id = Random.Range(1, 3);
+            int id = Random.Range(0, 3);
             Vector3 pos = new Vector3(Random.Range(-5, 5), 3, Random.Range(-5, 5));
             InventoryManager.Instance.InstantiateItemObj3D(id, pos);
+        }
+        //掉落物品
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            int id = Random.Range(1, 6);
+            Vector3 pos = new Vector3(Random.Range(-5, 5), 3, Random.Range(-5, 5));
+            InventoryManager.Instance.InstantiateWeaponObj3D(id, pos);
         }
     }
 }

@@ -1,14 +1,39 @@
 [
   {
+    "Id": 0,
+    "Name": "钱",
+    "Type": 0,
+    "Description": "一堆钱",
+    "MaxLimit": 0,
+    "RecoverHp": 0,
+    "RecoverMp": 0,
+    "Atk": 0,
+    "Def": 0,
+    "AtkSpeed": 0,
+    "MoveSpeed": 0,
+    "BuyPrice": 0,
+    "SellPrice": 0,
+    "SpritePath": "Textures/Objs/Item/coins",
+    "EffectId": 0,
+    "CoolingTime": 0
+  },
+  {
     "Id": 1,
     "Name": "苹果",
     "Type": 0,
     "Description": "回复5点hp",
     "MaxLimit": 5,
+    "RecoverHp": 5,
+    "RecoverMp": 0,
+    "Atk": 0,
+    "Def": 0,
+    "AtkSpeed": 0,
+    "MoveSpeed": 0,
     "BuyPrice": 3,
     "SellPrice": 1,
     "SpritePath": "Textures/Objs/Item/apple",
-    "EffectId": 1 
+    "EffectId": 1,
+    "CoolingTime": 2
   },
   {
     "Id": 2,
@@ -16,9 +41,16 @@
     "Type": 0,
     "Description": "回复10点hp",
     "MaxLimit": 5,
+    "RecoverHp": 10,
+    "RecoverMp": 0,
+    "Atk": 0,
+    "Def": 0,
+    "AtkSpeed": 0,
+    "MoveSpeed": 0,
     "BuyPrice": 3,
     "SellPrice": 1,
     "SpritePath": "Textures/Objs/Item/meat",
-    "EffectId": 1
+    "EffectId": 1,
+    "CoolingTime": 2
   }
 ]

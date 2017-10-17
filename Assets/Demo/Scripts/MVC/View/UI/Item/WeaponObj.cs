@@ -79,7 +79,7 @@ public class WeaponObj : MonoBehaviour {
             }
         }
     }
-
+#region 控制显示
     //设置武器
     public void SetWeapon(WeaponModel weapon)
     {
@@ -116,4 +116,24 @@ public class WeaponObj : MonoBehaviour {
     {
         transform.localPosition = position;
     }
+#endregion
+
+#region 实际作用效果
+
+    public void AdditionOnRole(WeaponModel weapon, RoleModel role)
+    {
+        //对人做加法
+        role.Atk += weapon.Atk;
+        role.Def += weapon.Def;
+        role.MoveSpeed += weapon.MoveSpeed;
+    }
+
+    public void ResetOnRole(WeaponModel weapon, RoleModel role)
+    {
+        //对人做减法
+        role.Atk -= weapon.Atk;
+        role.Def -= weapon.Def;
+        role.MoveSpeed -= weapon.MoveSpeed;
+    }
+    #endregion
 }

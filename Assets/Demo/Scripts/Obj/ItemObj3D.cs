@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ItemObj3D : MonoBehaviour {
 
     public ItemModel Item { get; private set; }//外部只读，只能在这个类内部更改
-
+   // public int id; //物品ID
     private Sprite currentSprite;
     private BoxCollider boxCollider;//实际的碰撞盒
 
@@ -23,6 +23,7 @@ public class ItemObj3D : MonoBehaviour {
     public void Awake ()
     {
         Invoke("DestorySelf", InventoryManager.Instance.instantiateObj.itemStayTime);//不拾取就自动消失
+        //if (id ==0) SetItem(id);//0就是钱
     }
 
     // Update is called once per frame
@@ -37,6 +38,13 @@ public class ItemObj3D : MonoBehaviour {
         SetSprite(item);
         SetColliderBox();//重新设置碰撞盒子
     }
+    ////根据Id设置
+    //public void SetItem(int id)
+    //{
+    //    this.Item = InventoryManager.Instance.GetItemById(id);
+    //    SetSprite(Item);
+    //    SetColliderBox();//重新设置碰撞盒子
+    //}
     //设置图片
     private void SetSprite(ItemModel item)
     {
@@ -61,10 +69,41 @@ public class ItemObj3D : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            ItemSlot slot = ItemPanel.Instance.FindSameIdSlot(this.Item);
-            if (slot != null) //如果碰到的东西已经在道具槽里有一个格子装着一样的东西
+            if (this.Item.Id == 0)
             {
-                if (slot.IsFilled()) //如果已经满了就找空格子
+                //是钱就直接加钱
+                int money = Random.Range(1, 20);
+                DataBaseManager.Instance.FindRole(0).Money += money;
+                InventoryManager.Instance.ShowInfoBox("拾取了"+ money+"块钱");
+                Destroy(gameObject);
+            }
+            else
+            {
+                ItemSlot slot = ItemPanel.Instance.FindSameIdSlot(this.Item);
+                if (slot != null) //如果碰到的东西已经在道具槽里有一个格子装着一样的东西
+                {
+                    if (slot.IsFilled()) //如果已经满了就找空格子
+                    {
+                        ItemSlot _slot = ItemPanel.Instance.FindEmptyItemSlot();
+                        if (_slot != null) //如果有空格子就存进去
+                        {
+                            _slot.StoreItem(this.Item);
+                            InventoryManager.Instance.ShowInfoBox("拾取了1个" + this.Item.Name);
+                            Destroy(gameObject);
+                        }
+                        else //没有空格子就提示背包已满
+                        {
+                            InventoryManager.Instance.ShowInfoBox("道具格子已经满了");
+                        }
+                    }
+                    else //不满就存进去
+                    {
+                        slot.StoreItem(this.Item);
+                        InventoryManager.Instance.ShowInfoBox("拾取了1个" + this.Item.Name);
+                        Destroy(gameObject);
+                    }
+                }
+                else//四个格子都没有装同样的东西
                 {
                     ItemSlot _slot = ItemPanel.Instance.FindEmptyItemSlot();
                     if (_slot != null) //如果有空格子就存进去
@@ -73,32 +112,12 @@ public class ItemObj3D : MonoBehaviour {
                         InventoryManager.Instance.ShowInfoBox("拾取了1个" + this.Item.Name);
                         Destroy(gameObject);
                     }
-                    else //没有空格子就提示背包已满
+                    else//没有空格子就提示背包已满
                     {
                         InventoryManager.Instance.ShowInfoBox("道具格子已经满了");
                     }
                 }
-                else //不满就存进去
-                {
-                    slot.StoreItem(this.Item);
-                    InventoryManager.Instance.ShowInfoBox("拾取了1个" + this.Item.Name);
-                    Destroy(gameObject);
-                }
-            }
-            else//四个格子都没有装同样的东西
-            {
-                ItemSlot _slot = ItemPanel.Instance.FindEmptyItemSlot();
-                if (_slot != null) //如果有空格子就存进去
-                {
-                    _slot.StoreItem(this.Item);
-                    InventoryManager.Instance.ShowInfoBox("拾取了1个" + this.Item.Name);
-                    Destroy(gameObject);
-                }
-                else//没有空格子就提示背包已满
-                {
-                    InventoryManager.Instance.ShowInfoBox("道具格子已经满了");
-                }
-            }
+            }          
         }
     }
     //销毁自身

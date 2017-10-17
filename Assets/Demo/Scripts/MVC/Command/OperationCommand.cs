@@ -69,7 +69,7 @@ public class OperationCommand : EventCommand {
         }else if (cd.OperationEventType == GameConfig.OperationEvent.USEITEM)
         {
             ItemObj itemObj = cd.itemObj;
-            itemObj.EffectOnRole(itemObj, DataBaseManager.Instance.FindRole(0), cd.playerTransform);
+            itemObj.EffectOnRole(itemObj, DataBaseManager.Instance.FindRole(0), cd.playerTransform);            
         }
 
     }

@@ -8,8 +8,10 @@ public class WeaponModel  {
     public WeaponType Type { get; set; }//武器类型
     public string Description { get; set; }
     public int Atk { get; set; }//武器攻击力加成
+    public int Def { get; set; }//防御力加成
     public int AtkRadius { get; set; }//攻击距离半径
     public int AtkSpeed { get; set; }//攻击速度加成
+    public int MoveSpeed { get; set; }//移动速度加成
     public List<SkillModel> Skill { get; set; }//附加技能
     public int BuyPrice { get; set; }//买入价格
     public int SellPrice { get; set; }//卖出价格
@@ -18,7 +20,9 @@ public class WeaponModel  {
     public enum WeaponType
     {
         MainHand = 0, //主手武器
-        OffHand = 1 //副手武器
+        OffHand = 1, //副手武器        
+        Head = 2,//头戴的
+        Foot = 3,//鞋
     }
 
     ///// <summary>

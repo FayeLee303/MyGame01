@@ -126,6 +126,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Demo\Scripts\Extensions\CountDownTimer.cs" />
     <Compile Include="Assets\Demo\Scripts\Extensions\DictionaryExtension.cs" />
     <Compile Include="Assets\Demo\Scripts\Extensions\FindMissingScriptsRecursively.cs" />
     <Compile Include="Assets\Demo\Scripts\Extensions\MonoFinder.cs" />
@@ -183,6 +184,7 @@
     <Compile Include="Assets\Demo\Scripts\MVC\View\UI\Item\ItemObj.cs" />
     <Compile Include="Assets\Demo\Scripts\MVC\View\UI\Item\ItemPanel.cs" />
     <Compile Include="Assets\Demo\Scripts\MVC\View\UI\Item\ItemSlot.cs" />
+    <Compile Include="Assets\Demo\Scripts\MVC\View\UI\Item\PickedItemObjUI.cs" />
     <Compile Include="Assets\Demo\Scripts\MVC\View\UI\Item\ToolTip.cs" />
     <Compile Include="Assets\Demo\Scripts\MVC\View\UI\Item\WeaponObj.cs" />
     <Compile Include="Assets\Demo\Scripts\MVC\View\UI\Item\WeaponSlot.cs" />

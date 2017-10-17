@@ -22,9 +22,8 @@ public class WeaponSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             weaponObj.transform.SetParent(this.transform);
             weaponObj.transform.localPosition = Vector3.zero; //归零
             weaponObj.GetComponent<WeaponObj>().SetWeapon(weapon);
+            weaponObj.GetComponent<WeaponObj>().AdditionOnRole(weapon,DataBaseManager.Instance.FindRole(0));//装备上武器给人物加成
 
-            //重置冷却时间
-            //weaponObj.GetComponent<WeaponObj>().SetCoolingTime();
         }
     }
 
