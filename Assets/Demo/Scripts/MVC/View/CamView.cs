@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using strange.extensions.dispatcher.eventdispatcher.api;
 using strange.extensions.mediation.impl;
+using DG.Tweening;
 
 public class CamView : FightingBaseView
 {
@@ -12,7 +13,7 @@ public class CamView : FightingBaseView
     private int _index;
 
     [Tooltip("镜头每次旋转的角度值，可修改数组长度和值")]
-    public float[] _roteArray = new float[4] { 0, 90, 180, -90 };
+    public float[] _roteArray = new float[4] { 0, 90, 180, 270 };
 
     //初始化函数
     public override void Init()
@@ -27,11 +28,20 @@ public class CamView : FightingBaseView
         this.gameObject.transform.position = Player.transform.position;
 
         GameUpdate();
+
+        Debug.Log(_index);
     }
 
     //监听玩家的输入
     public override void GameUpdate()
-    {    
+    {
+        //_targetRotation = gameObject.transform.rotation;
+        //_rotation = _targetRotation.eulerAngles;
+        //if (_rotation != new Vector3(_rotation.x, _roteArray[_index], _rotation.z))
+        //{
+        //    return;
+        //}
+
         if (Input.GetKeyDown(KeyCode.Q))
         {
             //派发镜头旋转事件
@@ -42,14 +52,14 @@ public class CamView : FightingBaseView
             dispatcher.Dispatch(ViewEvent.CamCounterClockwise, data_CCW);
             //执行镜头旋转
             if (_index == _roteArray.Length - 1)
-                _index = 0;              
+                _index = 0;
             else
-                _index++;          
+                _index++;
             _targetRotation = gameObject.transform.rotation;
             _rotation = _targetRotation.eulerAngles;
             _rotation = new Vector3(_rotation.x, _roteArray[_index], _rotation.z);
-            _targetRotation = Quaternion.Euler(_rotation);
-            gameObject.transform.rotation = _targetRotation;
+            transform.DORotate(_rotation, 0.5f);
+            
         }
 
         if (Input.GetKeyDown(KeyCode.E))
@@ -60,7 +70,7 @@ public class CamView : FightingBaseView
                 str = "CW"
             };
             dispatcher.Dispatch(ViewEvent.CamClockwise, data_CW);
-            //执行镜头旋转
+            //执行镜头旋转   
             if (_index == 0)
                 _index = _roteArray.Length - 1;
             else
@@ -68,8 +78,7 @@ public class CamView : FightingBaseView
             _targetRotation = gameObject.transform.rotation;
             _rotation = _targetRotation.eulerAngles;
             _rotation = new Vector3(_rotation.x, _roteArray[_index], _rotation.z);
-            _targetRotation = Quaternion.Euler(_rotation);
-            gameObject.transform.rotation = _targetRotation;
+            transform.DORotate(_rotation, 0.5f);
         }
     }
 }

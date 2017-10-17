@@ -19,7 +19,8 @@ public class OperationView : FightingBaseView {
         playerTransform = GameObject.Find("Player").transform;
         h = Input.GetAxis("Horizontal");//获取横竖轴上的输入
         v = Input.GetAxis("Vertical");
-        GameUpdate();
+        Move();
+        //GameUpdate();
         UIPanelUpdate();
         Test();
     }
@@ -213,5 +214,47 @@ public class OperationView : FightingBaseView {
             Vector3 pos = new Vector3(Random.Range(-5, 5), 3, Random.Range(-5, 5));
             InventoryManager.Instance.InstantiateWeaponObj3D(id, pos);
         }
+    }
+
+
+    public void Move()
+    {
+
+            for (int i = 0; i < 4; i++)
+            {
+                if (map.MapDir[i] == "North")
+                {
+                    if (i == 0)
+                    {
+                        break;
+                    }
+                    if (i == 1)
+                    {
+                        float temp;
+                        temp = v;
+                        v = -h;
+                        h = temp;
+                        break;
+                    }
+                    if (i == 2)
+                    {
+                        h = -h;
+                        v = -v;
+                        break;
+                    }
+                    if (i == 3)
+                    {
+                        float temp;
+                        temp = h;
+                        h = -v;
+                        v = temp;
+                        break;
+                    }
+                }
+            }
+        playerTransform.GetComponent<CharacterController>().Move(
+                new Vector3(h * DataBaseManager.Instance.FindRole(0).MoveSpeed * 0.02f, 0,
+                    v * DataBaseManager.Instance.FindRole(0).MoveSpeed * 0.02f));
+
     }
 }

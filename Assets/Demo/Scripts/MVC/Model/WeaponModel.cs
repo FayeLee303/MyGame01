@@ -12,7 +12,7 @@ public class WeaponModel  {
     public int AtkRadius { get; set; }//攻击距离半径
     public int AtkSpeed { get; set; }//攻击速度加成
     public int MoveSpeed { get; set; }//移动速度加成
-    public List<SkillModel> Skill { get; set; }//附加技能
+    public int SkillId { get; set; }//附加技能
     public int BuyPrice { get; set; }//买入价格
     public int SellPrice { get; set; }//卖出价格
     public string SpritePath { get; set; } //图片存储位置

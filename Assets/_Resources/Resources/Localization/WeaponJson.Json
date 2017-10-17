@@ -5,11 +5,11 @@
     "Type": 1,
     "Description": "一把生锈的斧头",
     "Atk": 2,
-    "Def": 0, 
+    "Def": 0,
     "AtkRadius": 5,
     "AtkSpeed": 3,
-    "MoveSpeed": 0, 
-    "Skill": null,
+    "MoveSpeed": 0,
+    "SkillId": 1,
     "BuyPrice": 5,
     "SellPrice": 1,
     "SpritePath": "Textures/Objs/Weapon/axe"
@@ -24,7 +24,7 @@
     "AtkRadius": 5,
     "AtkSpeed": 5,
     "MoveSpeed": 0,
-    "Skill": null,
+    "SkillId": 1,
     "BuyPrice": 8,
     "SellPrice": 2,
     "SpritePath": "Textures/Objs/Weapon/sword"
@@ -39,7 +39,7 @@
     "AtkRadius": 10,
     "AtkSpeed": 3,
     "MoveSpeed": 0,
-    "Skill": null,
+    "SkillId": 2,
     "BuyPrice": 8,
     "SellPrice": 2,
     "SpritePath": "Textures/Objs/Weapon/wand"
@@ -54,7 +54,7 @@
     "AtkRadius": 0,
     "AtkSpeed": 0,
     "MoveSpeed": 2,
-    "Skill": null,
+    "SkillId": 4,
     "BuyPrice": 5,
     "SellPrice": 2,
     "SpritePath": "Textures/Objs/Weapon/boots"
@@ -69,7 +69,7 @@
     "AtkRadius": 0,
     "AtkSpeed": 0,
     "MoveSpeed": 0,
-    "Skill": null,
+    "SkillId": 3,
     "BuyPrice": 5,
     "SellPrice": 2,
     "SpritePath": "Textures/Objs/Weapon/shield"

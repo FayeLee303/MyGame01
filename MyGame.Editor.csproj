@@ -187,6 +187,36 @@
     <Reference Include="BehaviorDesignerRuntime">
       <HintPath>Assets\Plugins\Behavior Designer\Runtime\BehaviorDesignerRuntime.dll</HintPath>
     </Reference>
+    <Reference Include="PlayMakerEditorResources">
+      <HintPath>Assets\PlayMaker\Editor\PlayMakerEditorResources.dll</HintPath>
+    </Reference>
+    <Reference Include="PlayMakerEditor">
+      <HintPath>Assets\PlayMaker\Editor\PlayMakerEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="ConditionalExpressionEditor">
+      <HintPath>Assets\PlayMaker\Editor\ConditionalExpressionEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="ConditionalExpression">
+      <HintPath>Assets\PlayMaker\ConditionalExpression.dll</HintPath>
+    </Reference>
+    <Reference Include="PlayMaker">
+      <HintPath>Assets\Plugins\PlayMaker\PlayMaker.dll</HintPath>
+    </Reference>
+    <Reference Include="DialogueSystemEditors">
+      <HintPath>Assets\Dialogue System\DLLs\Editor\DialogueSystemEditors.dll</HintPath>
+    </Reference>
+    <Reference Include="DialogueSystem">
+      <HintPath>Assets\Dialogue System\DLLs\DialogueSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="LuaInterpreter">
+      <HintPath>Assets\Dialogue System\DLLs\LuaInterpreter.dll</HintPath>
+    </Reference>
+    <Reference Include="Editor.ReorderableList">
+      <HintPath>Assets\Fungus\Thirdparty\Reorderable List Field\Editor\Editor.ReorderableList.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-UnityScript">
+      <HintPath>Library\ScriptAssemblies\Assembly-UnityScript.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="MyGame.csproj">
@@ -203,8 +233,79 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Dialogue System\Scripts\Editor\Converters\AbstractConverterWindow.cs" />
+    <Compile Include="Assets\Dialogue System\Scripts\Editor\Converters\ConverterWindowTemplate.cs" />
+    <Compile Include="Assets\Dialogue System\Scripts\Editor\Converters\CSVConverterWindow.cs" />
+    <Compile Include="Assets\Dialogue System\Scripts\Editor\Custom Field Types\CustomFieldType_SceneType.cs" />
+    <Compile Include="Assets\Dialogue System\Scripts\Editor\Custom Field Types\CustomFieldType_TemplateType.cs" />
+    <Compile Include="Assets\Dialogue System\Scripts\Editor\Inspectors\DialogueSystemControllerEditor.cs" />
+    <Compile Include="Assets\Dialogue System\Scripts\Editor\Wizards\DialogueManagerWizard.cs" />
+    <Compile Include="Assets\Dialogue System\Scripts\Editor\Wizards\NPCSetupWizard.cs" />
+    <Compile Include="Assets\Dialogue System\Scripts\Editor\Wizards\PlayerSetupWizard.cs" />
+    <Compile Include="Assets\Dialogue System\Scripts\Editor\Wizards\WelcomeWindow.cs" />
+    <Compile Include="Assets\Dialogue System\Scripts\Supplemental\Utility\Editor\SupplementalMenuItems.cs" />
+    <Compile Include="Assets\Dialogue System\Third Party Support\PlayMaker\Actions\Editor\CustomActionEditorBark.cs" />
+    <Compile Include="Assets\Dialogue System\Third Party Support\PlayMaker\Actions\Editor\CustomActionEditorDoesConversationHaveValidEntries.cs" />
+    <Compile Include="Assets\Dialogue System\Third Party Support\PlayMaker\Actions\Editor\CustomActionEditorRunLua.cs" />
+    <Compile Include="Assets\Dialogue System\Third Party Support\PlayMaker\Actions\Editor\CustomActionEditorStartConversation.cs" />
+    <Compile Include="Assets\Dialogue System\Third Party Support\PlayMaker\Scripts\Editor\PlayMakerMenuItems.cs" />
     <Compile Include="Assets\Editor\PackageExporter.cs" />
     <Compile Include="Assets\Editor\VersionUpdater.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\AssetModProcessor.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\BlockEditor.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\BlockInspector.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\CallEditor.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\CameraMenuItems.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\CharacterEditor.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\CommandEditor.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\CommandListAdaptor.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\ControlAudioEditor.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\CustomGUI.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\DialogInputEditor.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\EditorExtensions.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\EditorZoomArea.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\EventHandlerEditor.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\EventWindow.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\FlowchartEditor.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\FlowchartMenuItems.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\FlowchartWindow.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\FungusEditorPreferences.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\FungusEditorResources.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\FungusEditorResourcesGenerated.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\HierarchyIcons.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\IfEditor.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\InvokeEventEditor.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\InvokeMethodEditor.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\LabelEditor.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\LocalizationEditor.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\MenuEditor.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\MenuTimerEditor.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\NarrativeMenuItems.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\PortraitEditor.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\SaveDataEditor.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\SaveMenuEditor.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\SaveMenuItems.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\SavePointLoadedEditor.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\SayEditor.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\SerializedPropertyExtensions.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\SetColliderEditor.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\SetVariableEditor.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\SpriteMenuItems.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\StageEditor.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\VariableEditor.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\VariableListAdaptor.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\ViewEditor.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\WriteEditor.cs" />
+    <Compile Include="Assets\Fungus\Scripts\Editor\WriterAudioEditor.cs" />
+    <Compile Include="Assets\Fungus\Thirdparty\FungusLua\Scripts\Editor\DropDownControl.cs" />
+    <Compile Include="Assets\Fungus\Thirdparty\FungusLua\Scripts\Editor\ExecuteHandlerEditor.cs" />
+    <Compile Include="Assets\Fungus\Thirdparty\FungusLua\Scripts\Editor\LuaBindingsEditor.cs" />
+    <Compile Include="Assets\Fungus\Thirdparty\FungusLua\Scripts\Editor\LuaScriptEditor.cs" />
+    <Compile Include="Assets\Fungus\Thirdparty\FungusLua\Scripts\Editor\LuaStoreEditor.cs" />
+    <Compile Include="Assets\Fungus\Thirdparty\FungusLua\Scripts\Editor\LuaUtilsEditor.cs" />
+    <Compile Include="Assets\Fungus\Thirdparty\FungusLua\Scripts\Editor\MenuItems.cs" />
+    <Compile Include="Assets\Fungus\Thirdparty\LineEndings\Editor\LineEndingsEditMenu.cs" />
+    <Compile Include="Assets\Fungus\Thirdparty\Usfxr\Editor\SfxrGenerator.cs" />
     <Compile Include="Assets\InControl\Editor\InControlBuilder.cs" />
     <Compile Include="Assets\InControl\Editor\InControlManagerEditor.cs" />
     <Compile Include="Assets\InControl\Editor\InputManagerAssetGenerator.cs" />
@@ -217,11 +318,182 @@
     <Compile Include="Assets\InControl\Editor\ReorderableList\ReorderableListFlags.cs" />
     <Compile Include="Assets\InControl\Editor\ReorderableList\ReorderableListGUI.cs" />
     <Compile Include="Assets\InControl\Editor\ReorderableList\SerializedPropertyAdaptor.cs" />
+    <Compile Include="Assets\iTween\PlayMaker\Editor\iTweenMoveToActionEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Animator\Editor\BaseClasses\OnAnimatorUpdateActionEditorBase.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Animator\Editor\GetAnimatorAnimatorRootActionEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Animator\Editor\GetAnimatorBoneGameObjectActionEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Animator\Editor\GetAnimatorBoolActionEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Animator\Editor\GetAnimatorCurrentStateInfoActionEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Animator\Editor\GetAnimatorCurrentStateInfoIsNameActionEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Animator\Editor\GetAnimatorCurrentStateInfoIsTagActionEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Animator\Editor\GetAnimatorCurrentTransitionInfoActionEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Animator\Editor\GetAnimatorCurrentTransitionInfoIsNameActionEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Animator\Editor\GetAnimatorCurrentTransitionInfoIsUserNameActionEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Animator\Editor\GetAnimatorDeltaActionEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Animator\Editor\GetAnimatorFloatActionEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Animator\Editor\GetAnimatorGravityWeightActionEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Animator\Editor\GetAnimatorIKGoalActionEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Animator\Editor\GetAnimatorIntActionEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Animator\Editor\GetAnimatorIsLayerInTransitionActionEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Animator\Editor\GetAnimatorIsMatchingTargetActionEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Animator\Editor\GetAnimatorLayerWeightActionEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Animator\Editor\GetAnimatorNextStateInfoActionEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Animator\Editor\GetAnimatorPivotActionEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Animator\Editor\GetAnimatorSpeedActionEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Animator\Editor\GetAnimatorTargetActionEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Animator\Editor\SetAnimatorBoolActionEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Animator\Editor\SetAnimatorFloatActionEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Animator\Editor\SetAnimatorIntActionEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Editor\CallMethodEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Editor\GetDistanceEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Editor\LookAtActionEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Editor\MoveTowardsActionEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Editor\SetCameraFOVActionEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Editor\SetPropertyEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Quaternion\Editor\GetQuaternionEulerAnglesCustomEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Quaternion\Editor\GetQuaternionFromRotationCustomEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Quaternion\Editor\GetQuaternionMultipliedByQuaternionCustomEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Quaternion\Editor\GetQuaternionMultipliedByVectorCustomEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Quaternion\Editor\QuaternionAngleAxisCustomEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Quaternion\Editor\QuaternionCustomEditorBase.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Quaternion\Editor\QuaternionEulerCustomEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Quaternion\Editor\QuaternionInverseCustomEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Quaternion\Editor\QuaternionLerpCustomEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Quaternion\Editor\QuaternionLookRotationCustomEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Quaternion\Editor\QuaternionLowPassFilterCustomEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Quaternion\Editor\QuaternionRotateTowardsCustomEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\Quaternion\Editor\QuaternionSlerpCustomEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\SceneManager\Editor\GetSceneBuildIndexCustomEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\SceneManager\Editor\GetSceneIsDirtyCustomEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\SceneManager\Editor\GetSceneIsLoadedCustomEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\SceneManager\Editor\GetSceneIsValidCustomEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\SceneManager\Editor\GetSceneNameCustomEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\SceneManager\Editor\GetScenePathCustomEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\SceneManager\Editor\GetSceneRootCountCustomEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\SceneManager\Editor\GetSceneRootGameObjectsCustomEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\SceneManager\Editor\Internal\GetSceneActionBaseCustomEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\SceneManager\Editor\LoadSceneAsynchCustomEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\SceneManager\Editor\LoadSceneCustomEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\SceneManager\Editor\MergeScenesCustomEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\SceneManager\Editor\MoveGameObjectToSceneCustomEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\SceneManager\Editor\SetActiveSceneCustomEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\SceneManager\Editor\UnLoadSceneAsynchCustomEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Actions\SceneManager\Editor\UnLoadSceneCustomEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\AboutWindow.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\AssetGUIDs.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\ContextToolWindow.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\EditorStartupPrefs.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\FsmActionWindow.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\FsmComponentInspector.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\FsmEditorHelpers.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\FsmEditorWindow.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\FsmErrorWindow.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\FsmEventsWindow.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\FsmGlobalsWindow.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\FsmLogWindow.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\FsmSelectorWindow.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\FsmStateWindow.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\FsmTemplate.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\FsmTemplateEditor.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\FsmTemplateWindow.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\FsmTimelineWindow.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\PlayMakerAutoUpdater.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\PlayMakerBugReportWindow.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\PlayMakerBuildCallbacks.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\PlayMakerCustomActionWizard.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\PlayMakerDefines.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\PlayMakerEditorStartup.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\PlayMakerGlobalsInspector.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\PlayMakerGUIInspector.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\PlayMakerMainMenu.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\PlayMakerProjectTools.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\PlayMakerUpdater.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\PlayMakerUpgradeGuide.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\PlayMakerUpgradeTools.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\PlayMakerWelcomeWindow.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\PreUpdateChecker.cs" />
+    <Compile Include="Assets\PlayMaker\Editor\ReportWindow.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Demo\Scripts\Obj\FogOfWar.shader" />
     <None Include="Assets\Demo\Scripts\Obj\FogOfWarCast.shader" />
+    <None Include="Assets\Dialogue System\DLLs\_README.txt" />
+    <None Include="Assets\Dialogue System\Documentation\_README.txt" />
+    <None Include="Assets\Dialogue System\Examples\Art\Portraits\_README.txt" />
+    <None Include="Assets\Dialogue System\Examples\Art\Sounds\_README.txt" />
+    <None Include="Assets\Dialogue System\Examples\Art\_README.txt" />
+    <None Include="Assets\Dialogue System\Examples\Bark Example\Bark Conversation\_README.txt" />
+    <None Include="Assets\Dialogue System\Examples\Bark Example\Bark Example.xml" />
+    <None Include="Assets\Dialogue System\Examples\Bark Example\Three NPCs Bark\Three NPCs Bark.xml" />
+    <None Include="Assets\Dialogue System\Examples\Bark Example\Three NPCs Bark\_README.txt" />
+    <None Include="Assets\Dialogue System\Examples\Bark Example\_README.txt" />
+    <None Include="Assets\Dialogue System\Examples\Camera Angle Studio\_README.txt" />
+    <None Include="Assets\Dialogue System\Examples\Feature Demo\Articy Feature Demo\Articy Feature Demo.xml" />
+    <None Include="Assets\Dialogue System\Examples\Feature Demo\Dialogue Database\Feature Demo.xml" />
+    <None Include="Assets\Dialogue System\Examples\Feature Demo\Feature Demo with Continue Button\_README.txt" />
+    <None Include="Assets\Dialogue System\Examples\Feature Demo\Menu Text Demo\Feature Demo With Menu Text.xml" />
+    <None Include="Assets\Dialogue System\Examples\Feature Demo\Menu Text Demo\_README.txt" />
+    <None Include="Assets\Dialogue System\Examples\Feature Demo\Multiple Database Example\_README.txt" />
+    <None Include="Assets\Dialogue System\Examples\Feature Demo\Text Input Example\_README.txt" />
+    <None Include="Assets\Dialogue System\Examples\Feature Demo\_README.txt" />
+    <None Include="Assets\Dialogue System\Examples\Lua Example\_README.txt" />
+    <None Include="Assets\Dialogue System\Examples\Mobile Test\_README.txt" />
+    <None Include="Assets\Dialogue System\Examples\Quest Example\_README.txt" />
+    <None Include="Assets\Dialogue System\Examples\Quick Start\Quick Start.xml" />
+    <None Include="Assets\Dialogue System\Examples\Quick Start\_README.txt" />
+    <None Include="Assets\Dialogue System\Examples\Save Load Example\_README_FIRST_IMPORTANT!.txt" />
+    <None Include="Assets\Dialogue System\Examples\Sequence Example\_README.txt" />
+    <None Include="Assets\Dialogue System\Examples\Unity UI Examples\Animated Portrait Example\Private Hart Animated Portrait\sprites_credits.txt" />
+    <None Include="Assets\Dialogue System\Examples\Unity UI Examples\_README.txt" />
+    <None Include="Assets\Dialogue System\Examples\_README.txt" />
+    <None Include="Assets\Dialogue System\Prefabs\Legacy Unity GUI Prefabs\Circle\Textures\_README.txt" />
+    <None Include="Assets\Dialogue System\Prefabs\Legacy Unity GUI Prefabs\Computer\Bitwise Font\!license.txt" />
+    <None Include="Assets\Dialogue System\Prefabs\Legacy Unity GUI Prefabs\Computer\Typing.txt" />
+    <None Include="Assets\Dialogue System\Prefabs\Legacy Unity GUI Prefabs\Necromancer\Necromancer GUI\Kingthings.txt" />
+    <None Include="Assets\Dialogue System\Prefabs\Legacy Unity GUI Prefabs\Necromancer\Necromancer GUI\Readme.txt" />
+    <None Include="Assets\Dialogue System\Prefabs\Legacy Unity GUI Prefabs\Necromancer\_README.txt" />
+    <None Include="Assets\Dialogue System\Prefabs\Legacy Unity GUI Prefabs\Shared Audio\_README.txt" />
+    <None Include="Assets\Dialogue System\Prefabs\Legacy Unity GUI Prefabs\Shared Fonts\Orbitron\SIL Open Font License.txt" />
+    <None Include="Assets\Dialogue System\Prefabs\Legacy Unity GUI Prefabs\Shared Textures\_README.txt" />
+    <None Include="Assets\Dialogue System\Prefabs\Legacy Unity GUI Prefabs\Wheel\_README.txt" />
+    <None Include="Assets\Dialogue System\Prefabs\Legacy Unity GUI Prefabs\_README.txt" />
+    <None Include="Assets\Dialogue System\Prefabs\Unity UI Prefabs\Mobile\_IMPORTANT_README.txt" />
+    <None Include="Assets\Dialogue System\Prefabs\Unity UI Prefabs\Speech Bubble\_README.txt" />
+    <None Include="Assets\Dialogue System\Prefabs\Unity UI Prefabs\Unity UI Assets\_README.txt" />
+    <None Include="Assets\Dialogue System\Prefabs\Unity UI Prefabs\_README.txt" />
+    <None Include="Assets\Dialogue System\Prefabs\_README.txt" />
+    <None Include="Assets\Dialogue System\Prefabs\iOS\_README.txt" />
+    <None Include="Assets\Dialogue System\Prefabs\iOS\link.xml" />
+    <None Include="Assets\Dialogue System\Scripts\Shaders\LinesColoredBlended.shader" />
+    <None Include="Assets\Dialogue System\Scripts\Supplemental\UI\_README.txt" />
+    <None Include="Assets\Dialogue System\Scripts\Supplemental\Utility\_README.txt" />
+    <None Include="Assets\Dialogue System\Scripts\_README.txt" />
+    <None Include="Assets\Dialogue System\Third Party Support\PlayMaker\_README.txt" />
+    <None Include="Assets\Dialogue System\_README.txt" />
+    <None Include="Assets\Fungus\Docs\CHANGELOG.txt" />
+    <None Include="Assets\Fungus\Docs\LICENSE.txt" />
+    <None Include="Assets\Fungus\Docs\README.txt" />
+    <None Include="Assets\Fungus\Fonts\Amaranth\SIL Open Font License.txt" />
+    <None Include="Assets\Fungus\Fonts\Exo2\OFL.txt" />
+    <None Include="Assets\Fungus\Integrations\Playmaker\ReadMe.txt" />
+    <None Include="Assets\Fungus\Integrations\Spine\Readme.txt" />
+    <None Include="Assets\Fungus\Scripts\link.xml" />
+    <None Include="Assets\Fungus\Textures\Attribution.txt" />
+    <None Include="Assets\Fungus\Thirdparty\FungusLua\Resources\Lua\fungus.txt" />
+    <None Include="Assets\Fungus\Thirdparty\FungusLua\Resources\Lua\inspect.txt" />
+    <None Include="Assets\Fungus\Thirdparty\FungusLua\Resources\Types\FungusTypes.txt" />
+    <None Include="Assets\Fungus\Thirdparty\FungusLua\Resources\Types\UnityTypes.txt" />
+    <None Include="Assets\Fungus\Thirdparty\FungusLua\Thirdparty\JSON\readme.txt" />
+    <None Include="Assets\Fungus\Thirdparty\LeanTween\ReadMe.txt" />
+    <None Include="Assets\Fungus\Thirdparty\Reorderable List Field\Editor\Editor.ReorderableList.xml" />
+    <None Include="Assets\Fungus\Thirdparty\Reorderable List Field\LICENSE.txt" />
+    <None Include="Assets\Fungus\Thirdparty\Reorderable List Field\README.txt" />
     <None Include="Assets\InControl\README\README.txt" />
+    <None Include="Assets\PlayMaker\Editor\Install\readme.txt" />
+    <None Include="Assets\PlayMaker\Readme.txt" />
+    <None Include="Assets\PlayMaker\Resources\PlayMakerAssemblies.txt" />
+    <None Include="Assets\PlayMaker\Templates\readme.txt" />
+    <None Include="Assets\PlayMaker\Versions\readme.txt" />
     <None Include="Assets\Plugins\Behavior Designer\Editor\GridShader.shader" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween.XML" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween43.xml" />
@@ -250,6 +522,7 @@
     <None Include="Assets\Plugins\Sirenix\Readme.txt" />
     <None Include="Assets\StrangeIoC\scripts\strange\extensions\ReadMe.txt" />
     <None Include="Assets\_Resources\Resources\Shaders\LightTestShader.shader" />
+    <None Include="Assets\iTween\ReadMe!\ReadMe!.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

@@ -14,7 +14,7 @@ namespace Sirenix.OdinInspector.Demos
 
         [EnableIf("Enabled")]
         [LabelText("Scale")]
-        [MinMaxSlider(0, 2)]
+        //[MinMaxSlider(0, 2)]
         public Vector2 MinMaxScaleSize = new Vector2(0.5f, 1.2f);
     }
 }

@@ -1,0 +1,55 @@
+[
+  {
+    "Id": "1",
+    "Name": "挥砍",
+    "CoolingTime": "2",
+    "Range": "0",
+    "Damage": "5",
+    "UseHp": "0",
+    "UseMp": "0",
+    "Description": "一种江湖失传秘术，掌控武器乱挥，十分厉害的招式。",
+    "Buff": null,
+    "AnimationId": "0",
+    "SpritePath": "Textures/SkillIcon/huikan"
+  },
+  {
+    "Id": "2",
+    "Name": "火球术",
+    "CoolingTime": "8",
+    "Range": "20",
+    "Damage": "5",
+    "UseHp": "0",
+    "UseMp": "10",
+    "Description": "发射一个小火球，对命中的目标造成火焰伤害。",
+    "Buff": null,
+    "AnimationId": "0",
+    "SpritePath": "Textures/SkillIcon/huoqiushu"
+  },
+  {
+    "Id": "3",
+    "Name": "护盾",
+    "CoolingTime": "20",
+    "Range": "0",
+    "Damage": "0",
+    "UseHp": "0",
+    "UseMp": "30",
+    "Description": "生成一个能抵挡伤害的屏障。",
+    "Buff": null,
+    "AnimationId": "0",
+    "SpritePath": "Textures/SkillIcon/hudun"
+  },
+  {
+    "Id": "4",
+    "Name": "冲刺",
+    "CoolingTime": "5",
+    "Range": "5",
+    "Damage": "0",
+    "UseHp": "0",
+    "UseMp": "20",
+    "Description": "向前冲刺一小段距离，期间无敌。",
+    "Buff": null,
+    "AnimationId": "0",
+    "SpritePath": "Textures/SkillIcon/chongci"
+  }
+
+]
