@@ -26,7 +26,7 @@ public class MapGenerator : MonoBehaviour
     public int borderSize = 1;
 
     //存放最后实际有效的空洞房间。
-    private List<Room> survivingRooms = new List<Room>();
+    public List<Room> survivingRooms = new List<Room>();
 
     void Start()
     {

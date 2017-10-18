@@ -48,6 +48,8 @@ public class ItemSlot : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler,I
         if (transform.childCount > 0)
         {
             string text = transform.Find("ItemObjUI(Clone)").GetComponent<ItemObj>().Item.GetToolTipText();
+            InventoryManager.Instance.SetToolTipPivot(new Vector2(0,0f));
+            Debug.Log(InventoryManager.Instance.toolTip.transform.GetComponent<RectTransform>().pivot);
             InventoryManager.Instance.ShowToolTip(text); //要传递数据     
         }
        

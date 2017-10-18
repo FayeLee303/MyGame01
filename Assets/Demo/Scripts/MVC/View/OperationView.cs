@@ -28,50 +28,51 @@ public class OperationView : FightingBaseView {
     //监听玩家对角色的输入
     public override void GameUpdate()
     {
-        //移动
-        if (Input.GetKey(KeyCode.A) ||
-            Input.GetKey(KeyCode.D) ||
-            Input.GetKey(KeyCode.W) ||
-            Input.GetKey(KeyCode.S))
-        {
-            CustomOperationEventData data = new CustomOperationEventData
-            {
-                type = GameConfig.OperationEvent.MOVE,
-                ismoving = true,
-                OperationEventType = GameConfig.OperationEvent.MOVE,
-                playerTransform = this.playerTransform,
-                input_H = h,
-                input_V = v
-            };
-            dispatcher.Dispatch(GameConfig.OperationEvent.MOVE, data);
-        }
-        //停止
-        if (Input.GetKeyUp(KeyCode.A) ||
-            Input.GetKeyUp(KeyCode.D) ||
-            Input.GetKeyUp(KeyCode.W) ||
-            Input.GetKeyUp(KeyCode.S))
-        {
-            CustomOperationEventData data = new CustomOperationEventData
-            {
-                type = GameConfig.OperationEvent.STOP,
-                ismoving = false,
-                OperationEventType = GameConfig.OperationEvent.STOP,
-                playerTransform = this.playerTransform,
-                input_H = 0,
-                input_V = 0
-            };
-            dispatcher.Dispatch(GameConfig.OperationEvent.STOP, data);
-        }
-        //被攻击
-        if (Input.GetMouseButtonDown(0))
-        {
-            CustomOperationEventData data = new CustomOperationEventData
-            {
-                type = GameConfig.OperationEvent.BEATTACKED,
-                OperationEventType = GameConfig.OperationEvent.BEATTACKED
-            };
-            dispatcher.Dispatch(GameConfig.OperationEvent.BEATTACKED, data);
-        }     
+        ////移动
+        //if (Input.GetKey(KeyCode.A) ||
+        //    Input.GetKey(KeyCode.D) ||
+        //    Input.GetKey(KeyCode.W) ||
+        //    Input.GetKey(KeyCode.S))
+        //{
+        //    CustomOperationEventData data = new CustomOperationEventData
+        //    {
+        //        type = GameConfig.OperationEvent.MOVE,
+        //        ismoving = true,
+        //        OperationEventType = GameConfig.OperationEvent.MOVE,
+        //        playerTransform = this.playerTransform,
+        //        input_H = h,
+        //        input_V = v
+        //    };
+        //    dispatcher.Dispatch(GameConfig.OperationEvent.MOVE, data);
+        //}
+        ////停止
+        //if (Input.GetKeyUp(KeyCode.A) ||
+        //    Input.GetKeyUp(KeyCode.D) ||
+        //    Input.GetKeyUp(KeyCode.W) ||
+        //    Input.GetKeyUp(KeyCode.S))
+        //{
+        //    CustomOperationEventData data = new CustomOperationEventData
+        //    {
+        //        type = GameConfig.OperationEvent.STOP,
+        //        ismoving = false,
+        //        OperationEventType = GameConfig.OperationEvent.STOP,
+        //        playerTransform = this.playerTransform,
+        //        input_H = 0,
+        //        input_V = 0
+        //    };
+        //    dispatcher.Dispatch(GameConfig.OperationEvent.STOP, data);
+        //}
+        ////被攻击
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    CustomOperationEventData data = new CustomOperationEventData
+        //    {
+        //        type = GameConfig.OperationEvent.BEATTACKED,
+        //        OperationEventType = GameConfig.OperationEvent.BEATTACKED,
+        //        monsterDamageToPlayer = 10               
+        //    };
+        //    dispatcher.Dispatch(GameConfig.OperationEvent.BEATTACKED, data);
+        //}     
     }
 
     //更新UI面板，主要是键盘按键，UIPanle的预制体里自己写了鼠标点击屏幕的事件
@@ -98,8 +99,6 @@ public class OperationView : FightingBaseView {
         }
 
         //使用道具，
-        //还没有做道具的冷却时间
-        //TODO
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             if (ItemPanel.Instance.FindItemObjInSlot(0) == null) return;
@@ -184,6 +183,93 @@ public class OperationView : FightingBaseView {
                 ItemPanel.Instance.FindItemObjInSlot(3).cdTimer.Start(); //重设计时器
             }
         }
+
+        //使用武器
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            if (WeaponPanel.Instance.FindWeaponObjInSlot(0) == null) return;//空格子
+            else if (WeaponPanel.Instance.FindWeaponObjInSlot(0).cdTimer.IsTimeUp == false)
+            {
+                InventoryManager.Instance.ShowInfoBox("还没有准备好");
+                return;
+            }
+            else //格子里有物品并且物品没有在冷却时才发消息并且重设计时器
+            {
+                CustomOperationEventData data = new CustomOperationEventData
+                {
+                    type = GameConfig.OperationEvent.USEWEAPON,
+                    OperationEventType = GameConfig.OperationEvent.USEWEAPON,
+                    weaoponObj = WeaponPanel.Instance.FindWeaponObjInSlot(0),//第一个格子里的物品
+                    playerTransform = this.playerTransform
+                };
+                dispatcher.Dispatch(GameConfig.OperationEvent.USEWEAPON, data);
+                WeaponPanel.Instance.FindWeaponObjInSlot(0).cdTimer.Start(); //重设计时器
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            if (WeaponPanel.Instance.FindWeaponObjInSlot(1) == null) return;//空格子
+            else if (WeaponPanel.Instance.FindWeaponObjInSlot(1).cdTimer.IsTimeUp == false)
+            {
+                InventoryManager.Instance.ShowInfoBox("还没有准备好");
+                return;
+            }
+            else //格子里有物品并且物品没有在冷却时才发消息并且重设计时器
+            {
+                CustomOperationEventData data = new CustomOperationEventData
+                {
+                    type = GameConfig.OperationEvent.USEWEAPON,
+                    OperationEventType = GameConfig.OperationEvent.USEWEAPON,
+                    weaoponObj = WeaponPanel.Instance.FindWeaponObjInSlot(1),//第一个格子里的物品
+                    playerTransform = this.playerTransform
+                };
+                dispatcher.Dispatch(GameConfig.OperationEvent.USEWEAPON, data);
+                WeaponPanel.Instance.FindWeaponObjInSlot(1).cdTimer.Start(); //重设计时器
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            if (WeaponPanel.Instance.FindWeaponObjInSlot(2) == null) return;//空格子
+            else if (WeaponPanel.Instance.FindWeaponObjInSlot(2).cdTimer.IsTimeUp == false)
+            {
+                InventoryManager.Instance.ShowInfoBox("还没有准备好");
+                return;
+            }
+            else //格子里有物品并且物品没有在冷却时才发消息并且重设计时器
+            {
+                CustomOperationEventData data = new CustomOperationEventData
+                {
+                    type = GameConfig.OperationEvent.USEWEAPON,
+                    OperationEventType = GameConfig.OperationEvent.USEWEAPON,
+                    weaoponObj = WeaponPanel.Instance.FindWeaponObjInSlot(2),//第一个格子里的物品
+                    playerTransform = this.playerTransform
+                };
+                dispatcher.Dispatch(GameConfig.OperationEvent.USEWEAPON, data);
+                WeaponPanel.Instance.FindWeaponObjInSlot(2).cdTimer.Start(); //重设计时器
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (WeaponPanel.Instance.FindWeaponObjInSlot(3) == null) return;//空格子
+            else if (WeaponPanel.Instance.FindWeaponObjInSlot(3).cdTimer.IsTimeUp == false)
+            {
+                InventoryManager.Instance.ShowInfoBox("还没有准备好");
+                return;
+            }
+            else //格子里有物品并且物品没有在冷却时才发消息并且重设计时器
+            {
+                CustomOperationEventData data = new CustomOperationEventData
+                {
+                    type = GameConfig.OperationEvent.USEWEAPON,
+                    OperationEventType = GameConfig.OperationEvent.USEWEAPON,
+                    weaoponObj = WeaponPanel.Instance.FindWeaponObjInSlot(3),//第一个格子里的物品
+                    playerTransform = this.playerTransform
+                };
+                dispatcher.Dispatch(GameConfig.OperationEvent.USEWEAPON, data);
+                WeaponPanel.Instance.FindWeaponObjInSlot(3).cdTimer.Start(); //重设计时器
+            }
+        }
+
     }
 
     public void Test()
@@ -201,17 +287,17 @@ public class OperationView : FightingBaseView {
             WeaponPanel.Instance.StoreWeapon(id);
         }
         //掉落物品
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             int id = Random.Range(0, 3);
-            Vector3 pos = new Vector3(Random.Range(-5, 5), 3, Random.Range(-5, 5));
+            Vector3 pos = playerTransform.position + new Vector3(Random.Range(-5, 5), 3, Random.Range(-5, 5));
             InventoryManager.Instance.InstantiateItemObj3D(id, pos);
         }
         //掉落物品
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             int id = Random.Range(1, 6);
-            Vector3 pos = new Vector3(Random.Range(-5, 5), 3, Random.Range(-5, 5));
+            Vector3 pos =playerTransform.position+ new Vector3(Random.Range(-5, 5), 3, Random.Range(-5, 5));
             InventoryManager.Instance.InstantiateWeaponObj3D(id, pos);
         }
     }

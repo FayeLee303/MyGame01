@@ -70,7 +70,8 @@ public class GameConfig  {
         ATTACK,
         BEATTACKED,
         PICK,
-        USEITEM
+        USEITEM,
+        USEWEAPON
     }
 
 }

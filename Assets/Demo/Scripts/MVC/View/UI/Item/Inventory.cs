@@ -189,6 +189,14 @@ public class Inventory : MonoBehaviour {
         }
         return false;
     }
+
+    //根据顺序在链表中返回WeaponObj
+    public WeaponObj FindWeaponObjInSlot(int index)
+    {
+        if (weaponSlotList[index].transform.Find("WeaponObjUI(Clone)") == null) return null;
+        return weaponSlotList[index].transform.GetChild(0).GetComponent<WeaponObj>();
+    }
+
     #endregion
 
 }

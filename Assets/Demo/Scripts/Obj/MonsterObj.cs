@@ -24,4 +24,10 @@ public class MonsterObj : MonoBehaviour {
     {
         this.Monster = DataBaseManager.Instance.FindRole(id);
     }
+
+
+    public void MonsterDamagetoPlayer()
+    {
+        DataBaseManager.Instance.FindRole(0).Hp -= this.Monster.Atk;
+    }
 }

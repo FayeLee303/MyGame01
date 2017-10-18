@@ -8,11 +8,12 @@ public class WeaponObj : MonoBehaviour {
     public WeaponModel Weapon { get; set; }
     public int CoolingTime { get; set; }//冷却时间
 
-    private Image weaponImage;
- //   private Image coolingMaskImage;//冷却遮罩
- //   private Text coolingTimeText;
+    public bool interactable = true; //是否可以点击，当道具冷却时不可以点击
+    public CountDownTimer cdTimer; //计时器，在set自身的时候创建
 
-    //放在这里获得比在Start里好
+    private Image CoolingTimeImage { get { return transform.Find("CoolingMask").GetComponent<Image>(); } } //冷却遮罩图片
+
+    private Image weaponImage;
     private Image WeaponImage
     {
         get
@@ -24,28 +25,6 @@ public class WeaponObj : MonoBehaviour {
             return weaponImage;
         }
     }
-    //private Text CoolingTimeText
-    //{
-    //    get
-    //    {
-    //        if (coolingTimeText == null)
-    //        {
-    //            coolingTimeText = this.GetComponentInChildren<Text>();
-    //        }
-    //        return coolingTimeText;
-    //    }
-    //}
-    //private Image CoolingMaskImage
-    //{
-    //    get
-    //    {
-    //        if (coolingMaskImage == null)
-    //        {
-    //            coolingMaskImage = this.GetComponentInChildren<Image>();
-    //        }
-    //        return coolingMaskImage;
-    //    }
-    //}
 
     private Canvas canvas;
 
@@ -56,6 +35,7 @@ public class WeaponObj : MonoBehaviour {
     public void Start()
     {
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+        SetCoollingTimer();
     }
 
     private void Update()
@@ -78,6 +58,8 @@ public class WeaponObj : MonoBehaviour {
                 transform.localScale = new Vector3(targetScale, targetScale, targetScale);
             }
         }
+
+        SetCoolingImage();//一直更新图片显示
     }
 #region 控制显示
     //设置武器
@@ -89,17 +71,26 @@ public class WeaponObj : MonoBehaviour {
         transform.localScale = animationScale;
     }
 
-    //设置冷却时间
-    public void SetCoolingTime(int coolingTime)
+    //设置定时器
+    private void SetCoollingTimer()
     {
-        this.CoolingTime = coolingTime;
-        //CoolingTimeText.text = coolingTime.ToString();
-        //重置
-        //TODO
+        cdTimer = new CountDownTimer(Weapon.CoolingTime); //这里开始计时
     }
 
-    //冷却时间计时器，冷却图片跟着动
-    //TODO
+    //设置冷却显示
+    public void SetCoolingImage()
+    {
+        if (!cdTimer.IsTimeUp)
+        {
+            CoolingTimeImage.fillAmount = 1 - cdTimer.GetPercent(); //图片的显示
+            interactable = false;  //冷却期间不可交互
+        }
+        else
+        {
+            CoolingTimeImage.fillAmount = 0; //时间到了设为0
+            interactable = true; //时间到了可以交互
+        }
+    }
 
     //控制显示
     public void Show()
@@ -135,5 +126,11 @@ public class WeaponObj : MonoBehaviour {
         role.Def -= weapon.Def;
         role.MoveSpeed -= weapon.MoveSpeed;
     }
+
+    public void UseSkillToAttack(SkillModel skill)
+    {
+        InventoryManager.Instance.ShowInfoBox("放了一个" + skill.Name + "技能,对怪物造成" + skill.Damage + "点伤害");
+    }
+
     #endregion
 }

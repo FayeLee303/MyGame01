@@ -5,7 +5,6 @@ using UnityEngine;
 //这里同步怪物的UI信息
 public class MonsterView : FightingBaseView
 {
-
     //重写父类里的Start函数，在这里初始化
     protected override void Start()
     {
@@ -19,4 +18,6 @@ public class MonsterView : FightingBaseView
     public override void GameUpdate()
     {
     }
+
+   
 }

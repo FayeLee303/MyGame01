@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-class Room : IComparable<Room>
+public class Room : IComparable<Room>
 {
     public List<Coord> tiles;                           //所有坐标。
     public List<Coord> edgeTiles;                       //靠边的坐标。

@@ -9,7 +9,10 @@ public class CustomOperationEventData : CustomEventData {
     public GameConfig.OperationEvent OperationEventType { get; set; }
     public bool ismoving { get; set; }
     public Transform playerTransform { get; set; }
-    public float input_H { get; set; }//横竖轴上的输入
-    public float input_V { get; set; }
+    //public float input_H { get; set; }//横竖轴上的输入
+    //public float input_V { get; set; }
+    //public float monsterDamageToPlayer { get; set; }//被攻击伤害
     public ItemObj itemObj { get; set; }
+    public WeaponObj weaoponObj { get; set; }
+    
 }

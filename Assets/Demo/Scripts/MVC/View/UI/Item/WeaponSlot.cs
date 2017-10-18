@@ -54,6 +54,8 @@ public class WeaponSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         if (transform.childCount > 0 )
         {
             string text = transform.Find("WeaponObjUI(Clone)").GetComponent<WeaponObj>().Weapon.GetToolTipText();
+            InventoryManager.Instance.SetToolTipPivot(new Vector2(1, 0));
+            Debug.Log(InventoryManager.Instance.toolTip.transform.GetComponent<RectTransform>().pivot);
             InventoryManager.Instance.ShowToolTip(text); //要传递数据
 
         }

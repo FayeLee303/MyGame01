@@ -13,7 +13,7 @@ public class OperationCommand : EventCommand {
         var cd = evt as CustomOperationEventData;
 
         if (cd.OperationEventType == GameConfig.OperationEvent.BEATTACKED) {
-            DataBaseManager.Instance.FindRole(0).Hp -= 1;
+            //DataBaseManager.Instance.FindRole(0).Hp -= 1;
         }
         else if (cd.OperationEventType == GameConfig.OperationEvent.MOVE || cd.OperationEventType == GameConfig.OperationEvent.STOP)
         {
@@ -70,6 +70,10 @@ public class OperationCommand : EventCommand {
         {
             ItemObj itemObj = cd.itemObj;
             itemObj.EffectOnRole(itemObj, DataBaseManager.Instance.FindRole(0), cd.playerTransform);            
+        }else if (cd.OperationEventType == GameConfig.OperationEvent.USEWEAPON)
+        {
+            WeaponObj weaponObj = cd.weaoponObj;
+            weaponObj.UseSkillToAttack(InventoryManager.Instance.GetSkillById(weaponObj.Weapon.SkillId));
         }
 
     }

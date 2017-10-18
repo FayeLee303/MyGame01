@@ -17,17 +17,7 @@ public class ItemAndWeapon : MonoBehaviour {
     public bool inEgde;
 
     public float itemStayTime = 60;
-    // Use this for initialization
-    void Start ()
-    {
-        InitInstantiateItemAndWeapon();
 
-    }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     //实例化ItemObj3D
     public void InstantiateItemObj3D(int itemID, Vector3 pos)
@@ -68,5 +58,15 @@ public class ItemAndWeapon : MonoBehaviour {
             InstantiateWeapon3D(id, temP.position);
         }
     }
+
+    ////清除所有物体
+    //public void ClearAll()
+    //{
+    //    var go = transform.GetComponentsInChildren<Transform>();
+    //    foreach (Transform g in go)
+    //    {
+    //        Destroy(g.gameObject);
+    //    }
+    //}
 
 }

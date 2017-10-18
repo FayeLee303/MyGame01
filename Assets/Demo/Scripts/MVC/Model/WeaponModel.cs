@@ -13,6 +13,7 @@ public class WeaponModel  {
     public int AtkSpeed { get; set; }//攻击速度加成
     public int MoveSpeed { get; set; }//移动速度加成
     public int SkillId { get; set; }//附加技能
+    public float CoolingTime { get; set; } //冷却时间
     public int BuyPrice { get; set; }//买入价格
     public int SellPrice { get; set; }//卖出价格
     public string SpritePath { get; set; } //图片存储位置
@@ -47,6 +48,9 @@ public class WeaponModel  {
     //得到显示面板应该显示的内容
     public string GetToolTipText()
     {
+        SkillModel skill = InventoryManager.Instance.GetSkillById(SkillId);
+        string skillText = string.Format("<size=16><color=red>武器附加技能：{0}</color></size>\n技能冷却：{4}\n技能范围：{1}\n技能消耗：{2}\n<color=yellow>技能描述：{3}</color>",skill.Name,skill.Range,skill.UseMp,skill.Description,CoolingTime);
+
         string color = "";
         switch (Type)
         {
@@ -56,9 +60,15 @@ public class WeaponModel  {
             case WeaponType.OffHand:
                 color = "blue";
                 break;
+            case WeaponType.Foot:
+                color = "green";
+                break;
+            case WeaponType.Head:
+                color = "yellow";
+                break;
         }
-        string text = string.Format("<size=16>{0}</size>\n<color={7}>{1}</color>\n攻击力：{2}\n攻击范围：{3}\n攻击速度：{4}\n<color=yellow>描述：{8}</color>\n<color=green>购买价格：{5} 出售价格：{6}</color>",Name,Type.ToString(),Atk,AtkRadius,AtkSpeed,BuyPrice,SellPrice,color,Description);
+        string weaponText = string.Format("<size=16>{0}</size>\n<color={7}>{1}</color>\n攻击力：{2}\n攻击范围：{3}\n攻击速度：{4}\n移动速度：{9}\n<color=yellow>描述：{8}</color>\n<color=green>购买价格：{5} 出售价格：{6}</color>",Name,Type.ToString(),Atk,AtkRadius,AtkSpeed,BuyPrice,SellPrice,color,Description,MoveSpeed);
 
-        return text;
+        return weaponText+"\n"+skillText;
     }
 }

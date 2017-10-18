@@ -1,4 +1,4 @@
-﻿README
+README
 ======
 
 List control for Unity allowing editor developers to add reorderable list controls to
@@ -15,17 +15,13 @@ Features
 --------
 
 - Drag and drop reordering!
-- Automatically scrolls if inside a scroll view whilst reordering.
 - Easily customized using flags.
 - Adaptors for `IList<T>` and `SerializedProperty`.
 - Subscribe to add/remove item events.
 - Supports mixed item heights.
 - Disable drag and/or removal on per-item basis.
-- [Drop insertion](<https://youtu.be/gtdPvLaGTNI>) (for use with `UnityEditor.DragAndDrop`).
 - Styles can be overridden on per-list basis if desired.
 - Subclass list control to override context menu.
-- Add drop-down to add menu (or instead of add menu).
-- Helper functionality to build element adder menus.
 - User guide (Asset Path/Support/User Guide.pdf).
 - API reference documentation (Asset Path/Support/API Reference.chm).
 
@@ -34,9 +30,10 @@ Installing scripts
 
 This control can be added to your project by importing the Unity package which
 contains a compiled class library (DLL). This can be used by C# and UnityScript
-developers.
+developers. Minimal version of package does not include demonstration assets or
+zip archive of image source resources.
 
-- [Download RotorzReorderableList_v0.4.3 Package (requires Unity 4.5.5+)](<https://bitbucket.org/rotorz/reorderable-list-editor-field-for-unity/downloads/RotorzReorderableList_v0.4.3.unitypackage>)
+- [Download RotorzReorderableList_v0.2.6 Package (requires Unity 4.3.4+)](<https://bitbucket.org/rotorz/reorderable-list-editor-field-for-unity/downloads/RotorzReorderableList_v0.2.6.unitypackage>)
 
 If you would prefer to use the non-compiled source code version in your project,
 copy the contents of this repository somewhere into your project.

@@ -27,13 +27,14 @@ public class InventoryManager  {
         ParseItemJson();
         ParseWeaponJson();
         ParseEffectJson();
+        ParseSkillJson();
     }
 
     public void Init()
     {
         toolTip = GameObject.Find("ToolTip").GetComponent<ToolTip>();
         pickedItem = GameObject.Find("PickedItem").GetComponent<PickedItemObjUI>();
-        pickedWeapon = GameObject.Find("PickedWeapon").GetComponent<WeaponObj>();
+        pickedWeapon = GameObject.Find("PickedWeapon").GetComponent<PickedWeaponObjUI>();
         infoBox = GameObject.Find("InfoBox").GetComponent<InfoBox>();
         instantiateObj = GameObject.Find("ItemAndWeapon").GetComponent<ItemAndWeapon>();
     }
@@ -109,6 +110,41 @@ public class InventoryManager  {
             if (weapon.Id == id)
             {
                 return weapon;
+            }
+        }
+
+        return null;
+    }
+    #endregion
+
+#region Skill相关
+    public List<SkillModel> skillList;
+    /// <summary>
+    /// 解析技能信息
+    /// </summary>
+    private void ParseSkillJson()
+    {
+        //文本在Unity里面是TextAsset类型
+        TextAsset skillJsonText = Resources.Load<TextAsset>("Localization/SkillJson");
+        if (skillJsonText != null)
+        {
+            string skillJsonString = skillJsonText.text;
+            skillList = JsonMapper.ToObject<List<SkillModel>>(skillJsonString);
+        }
+        else
+        {
+            Debug.Log("读取文件失败");
+        }
+    }
+
+    //根据id从列表里取武器
+    public SkillModel GetSkillById(int id)
+    {
+        foreach (SkillModel skill in skillList)
+        {
+            if (skill.Id == id)
+            {
+                return skill;
             }
         }
 
@@ -218,7 +254,7 @@ public class InventoryManager  {
     #endregion
 
 #region PickedWeapon相关
-    private WeaponObj pickedWeapon;//鼠标选中的物体
+    private PickedWeaponObjUI pickedWeapon;//鼠标选中的物体
     private bool isPickedWeapon = false; //标志是否选中
 
     public bool IsPickedWeapon //是否拿着
@@ -226,7 +262,7 @@ public class InventoryManager  {
         get { return isPickedWeapon; }
     }
 
-    public WeaponObj PickedWeapon
+    public PickedWeaponObjUI PickedWeapon
     {
         get { return pickedWeapon; }
         set { pickedWeapon = value; }
@@ -278,6 +314,11 @@ public class InventoryManager  {
     {
         isToolTipShow = false;
         toolTip.HideToolTip();
+    }
+
+    public void SetToolTipPivot(Vector2 pivot)
+    {
+        toolTip.transform.GetComponent<RectTransform>().pivot = pivot;
     }
 
     #endregion

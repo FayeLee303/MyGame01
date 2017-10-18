@@ -28,8 +28,6 @@ public class CamView : FightingBaseView
         this.gameObject.transform.position = Player.transform.position;
 
         GameUpdate();
-
-        Debug.Log(_index);
     }
 
     //监听玩家的输入

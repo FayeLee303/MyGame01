@@ -22,8 +22,10 @@ public class OperationMediator : FightingBaseMediator {
     {
         view.dispatcher.UpdateListener(enable, GameConfig.OperationEvent.MOVE, Move);
         view.dispatcher.UpdateListener(enable, GameConfig.OperationEvent.STOP, Stop);
-        view.dispatcher.UpdateListener(enable, GameConfig.OperationEvent.BEATTACKED, BeAttack);
+        //view.dispatcher.UpdateListener(enable, GameConfig.OperationEvent.BEATTACKED, BeAttack);
         view.dispatcher.UpdateListener(enable, GameConfig.OperationEvent.USEITEM, UseItem);
+        view.dispatcher.UpdateListener(enable, GameConfig.OperationEvent.USEWEAPON, UseWeapon);
+
         base.UpdateListeners(enable);
     }
 
@@ -46,12 +48,12 @@ public class OperationMediator : FightingBaseMediator {
         dispatcher.Dispatch(GameConfig.CoreEvent.USER_INPUT, data);
     }
 
-    void BeAttack(IEvent e)
-    {
-        CustomEventData data = e as CustomEventData;
-        e.type = GameConfig.CoreEvent.USER_INPUT;
-        dispatcher.Dispatch(GameConfig.CoreEvent.USER_INPUT, data);       
-    }
+    //void BeAttack(IEvent e)
+    //{
+    //    CustomEventData data = e as CustomEventData;
+    //    e.type = GameConfig.CoreEvent.USER_INPUT;
+    //    dispatcher.Dispatch(GameConfig.CoreEvent.USER_INPUT, data);       
+    //}
 
     void UseItem(IEvent e)
     {
@@ -59,4 +61,12 @@ public class OperationMediator : FightingBaseMediator {
         e.type = GameConfig.OperationEvent.USEITEM;
         dispatcher.Dispatch(GameConfig.CoreEvent.USER_INPUT, data);
     }
+
+    void UseWeapon(IEvent e)
+    {
+        CustomEventData data = e as CustomEventData;
+        e.type = GameConfig.OperationEvent.USEWEAPON;
+        dispatcher.Dispatch(GameConfig.CoreEvent.USER_INPUT, data);
+    }
+
 }

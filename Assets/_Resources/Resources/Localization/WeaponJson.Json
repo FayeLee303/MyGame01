@@ -10,6 +10,7 @@
     "AtkSpeed": 3,
     "MoveSpeed": 0,
     "SkillId": 1,
+    "CoolingTime": 2, 
     "BuyPrice": 5,
     "SellPrice": 1,
     "SpritePath": "Textures/Objs/Weapon/axe"
@@ -25,6 +26,7 @@
     "AtkSpeed": 5,
     "MoveSpeed": 0,
     "SkillId": 1,
+    "CoolingTime": 2,
     "BuyPrice": 8,
     "SellPrice": 2,
     "SpritePath": "Textures/Objs/Weapon/sword"
@@ -40,6 +42,7 @@
     "AtkSpeed": 3,
     "MoveSpeed": 0,
     "SkillId": 2,
+    "CoolingTime": 5,
     "BuyPrice": 8,
     "SellPrice": 2,
     "SpritePath": "Textures/Objs/Weapon/wand"
@@ -55,6 +58,7 @@
     "AtkSpeed": 0,
     "MoveSpeed": 2,
     "SkillId": 4,
+    "CoolingTime": 5,
     "BuyPrice": 5,
     "SellPrice": 2,
     "SpritePath": "Textures/Objs/Weapon/boots"
@@ -70,6 +74,7 @@
     "AtkSpeed": 0,
     "MoveSpeed": 0,
     "SkillId": 3,
+    "CoolingTime": 8,
     "BuyPrice": 5,
     "SellPrice": 2,
     "SpritePath": "Textures/Objs/Weapon/shield"

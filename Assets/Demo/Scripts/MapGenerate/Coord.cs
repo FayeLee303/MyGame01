@@ -1,5 +1,5 @@
 ﻿
-struct Coord
+public struct Coord
 {
     public int tileX;
     public int tileY;
